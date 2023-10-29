@@ -1,4 +1,5 @@
 import 'package:e_commerce/screens/login.dart';
+import 'package:e_commerce/screens/splash.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -13,7 +14,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
 
       debugShowCheckedModeBanner: false,
-      home:  LoginScreen(),
+      home:  SplashScreen(),
     );
   }
 }
