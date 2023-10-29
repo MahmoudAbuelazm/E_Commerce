@@ -1,0 +1,87 @@
+.signup {
+  width: 100%;
+  height: calc(100vh - 89px);
+}
+.input {
+  padding-left: 0;
+  border: none;
+  border-radius: 0;
+  text-align: left;
+  border-bottom: 1px solid var(--gray-color);
+  box-shadow: none;
+  background-color: transparent;
+}
+.input:focus {
+  background-color: transparent;
+  box-shadow: none;
+  outline: none;
+  border-bottom: 1px solid var(--main-color);
+}
+
+.input::placeholder {
+  color: var(--gray-color);
+  font-size: 14px;
+}
+
+.submit {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 600;
+}
+.submit button {
+  width: 100%;
+  padding: 10px;
+  margin: 10px;
+  transition: 0.2s;
+}
+.submit button:hover {
+  padding: 20px;
+}
+.submit button:active {
+  opacity: 0.6s;
+}
+
+.submit button:nth-child(1) {
+  background-color: var(--main-color);
+  border-radius: 6px;
+  color: #fff;
+  border: none;
+  text-transform: capitalize;
+}
+.submit button:nth-child(2) {
+  background-color: transparent;
+  border-radius: 6px;
+  color: #fff;
+  border: 1px solid #000;
+  text-transform: capitalize;
+  color: #000;
+  font-weight: 600;
+}
+
+.submit a {
+  text-decoration: none;
+  color: var(--main-color);
+  font-size: 14px;
+}
+
+.last {
+  text-transform: capitalize;
+}
+
+.last {
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.message {
+  text-align: left;
+  color: red;
+  width: 100%;
+  font-size: 14px;
+  margin: 15px 0px;
+  border-left: 2px solid red;
+  padding-left: 10px;
+  position: relative;
+}

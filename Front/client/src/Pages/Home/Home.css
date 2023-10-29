@@ -32,6 +32,7 @@
   display: flex !important;
   justify-content: space-around;
   align-items: center;
+  cursor: grab;
 }
 .swiper-slide .text {
   color: white;
@@ -174,6 +175,17 @@
   bottom: -50px;
   left: 0;
   transition: 0.3s;
+}
+.img_container svg {
+  position: absolute;
+  top: 5px;
+  right: 7px;
+  width: 32px;
+  height: 32px;
+  background-color: #d9d9d9;
+  border-radius: 50%;
+  padding: 3px;
+  color: var(--secondary-color);
 }
 .img_container:hover .btn {
   bottom: 0px;

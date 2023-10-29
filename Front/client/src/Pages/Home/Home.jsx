@@ -13,7 +13,8 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
-import { AiTwotoneStar } from "react-icons/ai";
+import { AiOutlineHeart, AiTwotoneStar } from "react-icons/ai";
+import Footer from "Pages/Footer/Footer";
 const Home = () => {
     return (
         <>
@@ -32,7 +33,6 @@ const Home = () => {
                     </div>
                     <div className="col-sm-9 ps-sm-5 ms-sm-4">
                         <Swiper
-                            // install Swiper modules
                             modules={[Navigation, Pagination, Scrollbar, A11y]}
                             spaceBetween={0}
                             slidesPerView={1}
@@ -79,7 +79,7 @@ const Home = () => {
                                             viewBox="0 0 16 16"
                                         >
                                             <path
-                                                fill-rule="evenodd"
+
                                                 d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"
                                             />
                                         </svg>
@@ -423,6 +423,7 @@ const Home = () => {
                                 <div className="img_container">
                                     <img src="coat.png" className="card-img-top" alt="..." />
                                     <div className="btn btn-dark">Add To Cart</div>
+                                    <AiOutlineHeart />
                                 </div>
                                 <div className="card-body">
                                     <p>coat canada</p>
@@ -486,17 +487,17 @@ const Home = () => {
                                 <div className="img_container">
                                     <img src="coat.png" className="card-img-top" alt="..." />
                                     <div className="btn btn-dark">Add To Cart</div>
-                                </div>
-                                <div className="card-body">
-                                    <p>coat canada</p>
-                                    <span>
-                                        300$ <b>360$</b>
-                                    </span>
-                                    <div className="star">
-                                        <AiTwotoneStar />
-                                        <AiTwotoneStar />
-                                        <AiTwotoneStar />
 
+                                </div>
+                                <div className="card-body">
+                                    <p>coat canada</p>
+                                    <span>
+                                        300$ <b>360$</b>
+                                    </span>
+                                    <div className="star">
+                                        <AiTwotoneStar />
+                                        <AiTwotoneStar />
+                                        <AiTwotoneStar />
                                         <AiTwotoneStar />
                                         <AiTwotoneStar />
                                     </div>
@@ -586,6 +587,7 @@ const Home = () => {
                             <div className="img_container">
                                 <img src="coat.png" className="card-img-top" alt="..." />
                                 <div className="btn btn-dark">Add To Cart</div>
+                                <AiOutlineHeart />
                             </div>
                             <div className="card-body">
                                 <p>coat canada</p>
@@ -725,6 +727,7 @@ const Home = () => {
                     </div>
                 </div>
             </div>
+            <Footer />
         </>
     );
 };
