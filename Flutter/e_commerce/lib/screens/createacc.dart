@@ -1,29 +1,19 @@
-import 'package:e_commerce/screens/createacc.dart';
-import 'package:e_commerce/screens/forgetpass.dart';
+import 'package:e_commerce/screens/login.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key});
+class CreateAcc extends StatelessWidget {
+  const CreateAcc({super.key});
 
-  @override
-  State<LoginScreen> createState() => _LoginScreenState();
-}
-
-class _LoginScreenState extends State<LoginScreen> {
-  bool ischecked = false;
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
-
     return Scaffold(
       backgroundColor: const Color(0xff0e3d5bb),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisAlignment: MainAxisAlignment.start,
           children: [
             SizedBox(
               height: height * 0.1,
@@ -42,7 +32,7 @@ class _LoginScreenState extends State<LoginScreen> {
               height: height * 0.05,
             ),
             Text(
-              "Login to your Account",
+              "Create an Account",
               style: GoogleFonts.poppins(
                 color: Colors.black,
                 fontSize: 22,
@@ -113,48 +103,102 @@ class _LoginScreenState extends State<LoginScreen> {
             SizedBox(
               height: height * 0.01,
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                Checkbox(
-                  value: ischecked,
-                  activeColor: Colors.black,
-                  onChanged: (bool? newValue) {
-                    setState(() {
-                      ischecked = newValue!;
-                    });
-                  },
+            SizedBox(
+              height: height * 0.08,
+              child: Card(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10),
                 ),
-                Text(
-                  "Remember me.",
-                  style: GoogleFonts.poppins(
-                    color: Colors.black.withOpacity(0.67),
-                    fontSize: 12,
-                    fontWeight: FontWeight.w400,
-                  ),
-                ),
-                const Spacer(),
-                TextButton(
-                  onPressed: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) {
-                      return ForgetPass();
-                    }));
-                  },
-                  child: Text(
-                    "Forget password..?",
-                    style: GoogleFonts.poppins(
-                      color: Colors.black.withOpacity(0.67),
-                      fontSize: 12,
-                      fontWeight: FontWeight.w400,
-                      decoration: TextDecoration.underline,
+                shadowColor: Colors.black,
+                elevation: 5,
+                child: TextField(
+                  decoration: InputDecoration(
+                    suffixIcon: Image.asset("images/tabler_eye-closed.png"),
+                    filled: true,
+                    fillColor: Colors.white,
+                    hintText: "confirm Password",
+                    hintStyle: GoogleFonts.poppins(
+                      color: Colors.black.withOpacity(0.7),
+                      fontSize: 16,
+                      fontWeight: FontWeight.w500,
+                    ),
+                    border: OutlineInputBorder(
+                      borderSide:
+                          BorderSide.none, // set the border side to none
+                      borderRadius: BorderRadius.circular(10),
                     ),
                   ),
                 ),
+              ),
+            ),
+            SizedBox(
+              height: height * 0.01,
+            ),
+            Row(
+              children: [
+                CircleAvatar(
+                  radius: 10,
+                  backgroundColor: Colors.green,
+                  child: Image.asset(
+                    "images/icon-park-solid_correct.png",
+                  ),
+                ),
+                Text(
+                  " At least 8 characters",
+                  style: GoogleFonts.inter(
+                    color: Colors.green,
+                    fontSize: 14,
+                    fontWeight: FontWeight.w500,
+                  ),
+                )
               ],
             ),
             SizedBox(
-              height: height * 0.02,
+              height: height * 0.01,
+            ),
+            Row(
+              children: [
+                CircleAvatar(
+                  radius: 10,
+                  backgroundColor: Colors.green,
+                  child: Image.asset(
+                    "images/icon-park-solid_correct.png",
+                  ),
+                ),
+                Text(
+                  " At least 1 number",
+                  style: GoogleFonts.inter(
+                    color: Colors.green,
+                    fontSize: 14,
+                    fontWeight: FontWeight.w500,
+                  ),
+                )
+              ],
+            ),
+            SizedBox(
+              height: height * 0.01,
+            ),
+            Row(
+              children: [
+                CircleAvatar(
+                  radius: 10,
+                  backgroundColor: Colors.green,
+                  child: Image.asset(
+                    "images/icon-park-solid_correct.png",
+                  ),
+                ),
+                Text(
+                  " Bath upper and lower case letters",
+                  style: GoogleFonts.inter(
+                    color: Colors.green,
+                    fontSize: 14,
+                    fontWeight: FontWeight.w500,
+                  ),
+                )
+              ],
+            ),
+            SizedBox(
+              height: height * 0.03,
             ),
             ElevatedButton(
               style: ElevatedButton.styleFrom(
@@ -166,10 +210,10 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
               onPressed: () {},
               child: Text(
-                "Login",
+                "Sign Up",
                 style: GoogleFonts.poppins(
                   color: Colors.white,
-                  fontSize: 14,
+                  fontSize: 16,
                   fontWeight: FontWeight.w500,
                 ),
               ),
@@ -188,7 +232,7 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
             ),
             SizedBox(
-              height: height * 0.05,
+              height: height * 0.03,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -228,12 +272,14 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
               ],
             ),
-            const Spacer(),
+            SizedBox(
+              height: height * 0.01,
+            ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  "Don’t have any account ?",
+                  "have any account ?",
                   style: GoogleFonts.poppins(
                     color: const Color(0xff191E21),
                     fontSize: 15,
@@ -242,13 +288,12 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
                 TextButton(
                   onPressed: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) {
-                      return CreateAcc();
-                    }));
-                  },
+                  Navigator.push(context, MaterialPageRoute(builder: (context) {
+                    return LoginScreen();
+                  }));
+                },
                   child: Text(
-                    "Sign Up.",
+                    "Log in.",
                     style: GoogleFonts.poppins(
                       color: const Color(0xff912B22),
                       fontSize: 15,
@@ -257,9 +302,6 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                 ),
               ],
-            ),
-            SizedBox(
-              height: height * 0.03,
             ),
           ],
         ),
