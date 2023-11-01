@@ -81,3 +81,11 @@
   line-height: 18px;
   opacity: 0.5;
 }
+.avatar {
+  background-color: var(--main-color);
+  fill: white;
+  padding: 0.3rem;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+}

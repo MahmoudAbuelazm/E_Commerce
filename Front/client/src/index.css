@@ -9,3 +9,10 @@ body {
   --secondary-color: #191e21;
   --gray-color: #7e7373;
 }
+::-webkit-scrollbar {
+  background-color: var(--bg-color);
+}
+::-webkit-scrollbar-thumb {
+  background-color: var(--secondary-color);
+  border-radius: 15px;
+}
