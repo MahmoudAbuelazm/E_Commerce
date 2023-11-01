@@ -7,7 +7,7 @@ import axios from "axios";
 function Login() {
   let navigate = useNavigate();
   const [message, setMessage] = useState("");
-
+  const [isLoading, setisLoading] = useState(false);
   const [user, setUser] = useState({
     email: "",
     password: "",
@@ -24,16 +24,22 @@ function Login() {
 
   let login = (e) => {
     e.preventDefault();
+    setisLoading(true);
     axios
       .post("https://backend-kappa-beige.vercel.app/auth/login", user)
       .then((res) => {
         console.log(res.data);
+        setisLoading(false);
         setMessage(res.data.message);
         if (res.data.success) {
           navigate("/");
         }
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        console.log(err)
+        setisLoading(false)
+      }
+      );
   };
 
   return (
@@ -86,10 +92,9 @@ function Login() {
                 />
               </div>
               {message && <div className={`${Style.message}`}>{message}</div>}
-
               <div className={Style.submit}>
                 <button className={Style.btn} type="submit">
-                  Login
+                  {isLoading ? <i className="fas fa-spinner fa-spin"></i> : "login"}
                 </button>
                 <Link to={"/forgetpassword"}>forget password</Link>
               </div>
