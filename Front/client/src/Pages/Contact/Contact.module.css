@@ -7,7 +7,7 @@
   fill: #f8f8f8;
 }
 #contain {
-  background-color: var(--secondary-color);
+  background-color: #e9e5dc;
 }
 .inputs {
   display: flex;
@@ -16,7 +16,7 @@
 }
 .inputs input,
 .inputs textarea {
-  background-color: #e9e5dc;
+  background-color: var(--gray-color);
   resize: none;
 }
 .inputs textarea {
@@ -28,5 +28,8 @@
   outline: none;
   border: none;
   box-shadow: none;
-  background-color: #e9e5dc;
+  background-color: var(--gray-color);
+}
+::placeholder {
+  color: white !important;
 }
