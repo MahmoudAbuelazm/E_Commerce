@@ -49,7 +49,7 @@ function Navbar() {
                   }}
                   className={`nav-link ${activeLink === "contact" ? `${Style.active}` : ""
                     }`}
-                  to="#"
+                  to="/contact"
                 >
                   Contact
                 </Link>

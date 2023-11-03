@@ -1,10 +1,10 @@
 // @ts-nocheck
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Style from "./signup.module.css";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-function Signup() {
+function Signup(props) {
   let navigate = useNavigate();
   const [message, setMessage] = useState("");
   const [user, setUser] = useState({
@@ -37,6 +37,14 @@ function Signup() {
       .catch((err) => console.log(err));
     console.log(response);
   };
+  useEffect(() => {
+    props.show(false)
+    return () => {
+
+      props.show(true)
+    }
+  }, [props])
+
   return (
     <>
       <div className={`container ${Style.signup}`}>

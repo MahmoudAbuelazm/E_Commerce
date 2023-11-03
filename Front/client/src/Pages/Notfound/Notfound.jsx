@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 
 /**
@@ -7,6 +7,14 @@ import { Link } from "react-router-dom";
  **/
 
 const Notfound = (props) => {
+  useEffect(() => {
+    props.show(false)
+    return () => {
+
+      props.show(true)
+    }
+  }, [props])
+
   return (
     <div
       className="d-flex justify-content-center align-items-center"

@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Style from "../login/login.module.css";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-function Forgetpassword() {
+function Forgetpassword(props) {
   const [user, setUser] = useState({
     email: "",
   });
@@ -40,6 +40,14 @@ function Forgetpassword() {
     "🚀 ~ file: Forgetpassword.jsx:7 ~ Forgetpassword ~ user:",
     user.email
   );
+  useEffect(() => {
+    props.show(false)
+    return () => {
+
+      props.show(true)
+    }
+  }, [props])
+
   return (
     <>
       <div className="container">
