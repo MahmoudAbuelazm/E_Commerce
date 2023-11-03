@@ -314,7 +314,7 @@ const Home = () => {
                         <p>Categories</p>
                         <b>Browse By Category</b>
                     </div>
-                    <div className="cards d-flex flex-wrap gap-5 mt-5">
+                    <div className="cards d-flex flex-wrap justify-content-center gap-5 mt-5">
                         <div className="item ">
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
@@ -412,7 +412,7 @@ const Home = () => {
                         </div>
                     </div>
                     <Swiper
-                        slidesPerView={4}
+                        slidesPerView={3.4}
                         spaceBetween={10}
                         freeMode={true}
                         modules={[FreeMode]}
