@@ -1,5 +1,6 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { lazy, Suspense, useState } from "react";
+import Footer from "Pages/Footer/Footer";
 
 // Import your components
 const Navbar = lazy(() => import("Pages/Navbar/Navbar"));
@@ -14,6 +15,7 @@ const Rresetpaswword = lazy(() =>
 );
 const Home = lazy(() => import("Pages/Home/Home"));
 const Notfound = lazy(() => import("Pages/Notfound/Notfound"));
+const Contact = lazy(() => import("Pages/Contact/Contact"));
 
 function App() {
   return (
@@ -39,8 +41,10 @@ function App() {
         <Route path="forgetpassword" element={<Forgetpassword />} />
         <Route path="resetpassword" element={<Rresetpaswword />} />
         <Route path="signup" element={<Signup />} />
+        <Route path="contact" element={<Contact />} />
         <Route path="*" element={<Notfound />} />
       </Routes>
+      <Footer />
     </Suspense>
   );
 }
