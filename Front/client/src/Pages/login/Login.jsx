@@ -100,11 +100,20 @@ function Login(props) {
               {message && <div className={`${Style.message}`}>{message}</div>}
               <div className={Style.submit}>
                 <button className={Style.btn} type="submit">
-                  {isLoading ? (
-                    <i className="fas fa-spinner fa-spin"></i>
-                  ) : (
-                    "login"
-                  )}
+                  {!isLoading ?
+                    <div
+                      style={{ background: "#912b22" }}
+                      className="text-white align-self-end"
+                    >
+                      login
+                    </div>
+                    :
+                    <div style={{ background: "#912b22" }} className="justify-content-center rounded-3 align-self-end">
+                      <div class="spinner-border text-white mx-auto d-block" role="status">
+                        <span class="sr-only">Loading...</span>
+                      </div>
+                    </div>
+                  }
                 </button>
                 <Link to={"/forgetpassword"}>forget password</Link>
               </div>

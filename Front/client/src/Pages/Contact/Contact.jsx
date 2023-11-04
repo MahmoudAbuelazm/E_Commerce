@@ -1,9 +1,11 @@
+// @ts-nocheck
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import style from "./Contact.module.css";
 import axios from "axios";
 const Contact = () => {
     const [isLoading, setisLoading] = useState(false);
+    const [message, setMessage] = useState("");
     const [userMessage, setuserMessage] = useState({
         name: "",
         phone: "",
@@ -17,17 +19,19 @@ const Contact = () => {
         console.log(userMessage);
     };
     const submitSend = (e) => {
-        e.preventDefault()
+        e.preventDefault();
         setisLoading(true);
         axios
             .post("https://backend-kappa-beige.vercel.app/about", userMessage)
             .then((response) => {
-                console.log(response.data.message)
+                console.log(response.data.message);
                 setisLoading(false);
-            }).catch((err) => {
+                setMessage(response.data.message);
+            })
+            .catch((err) => {
                 console.log(err);
                 setisLoading(false);
-            })
+            });
     };
     return (
 
@@ -104,7 +108,7 @@ const Contact = () => {
                                     onChange={handleChange}
                                     type="text"
                                     name="name"
-                                    className={`form-control ${style.place}`}
+                                    className={`form-control text-white ${style.place}`}
                                     id="exampleFormControlInput1"
                                     placeholder="Your Name "
                                 />
@@ -112,7 +116,7 @@ const Contact = () => {
                                     onChange={handleChange}
                                     type="email"
                                     name="email"
-                                    className={`form-control ${style.place}`}
+                                    className={`form-control text-white ${style.place}`}
                                     id="exampleFormControlInput1"
                                     placeholder="Your Email "
                                 />
@@ -120,7 +124,7 @@ const Contact = () => {
                                     onChange={handleChange}
                                     type="number"
                                     name="phone"
-                                    className={`form-control ${style.place}`}
+                                    className={`form-control text-white ${style.place}`}
                                     id="exampleFormControlInput1"
                                     placeholder="Your Phone "
                                 />
@@ -129,20 +133,30 @@ const Contact = () => {
                                 <textarea
                                     onChange={handleChange}
                                     name="message"
-                                    className={`form-control ${style.place}`}
+                                    className={`form-control text-white ${style.place}`}
                                     placeholder="Your Message"
                                     id="exampleFormControlTextarea1"
                                     rows={3}
                                     defaultValue={""}
                                 />
                             </div>
-                            <div
-                                style={{ background: "#912b22" }}
-                                className="btn w-25 text-white align-self-end py-3"
-                                onClick={submitSend}
-                            >
-                                {isLoading ? (<i className="fas fa-spinner fa-spin"></i>) : ("send message")}
-                            </div>
+                            {message && <div className={`${style.message}`}>{message}</div>}
+                            {!isLoading ?
+                                <div
+                                    style={{ background: "#912b22" }}
+                                    className="btn w-25 text-white align-self-end py-3"
+                                    onClick={submitSend}
+                                >
+
+                                    send message
+                                </div>
+                                :
+                                <div style={{ background: "#912b22" }} className=" w-25 justify-content-center rounded-3 align-self-end py-2">
+                                    <div class="spinner-border text-white mx-auto d-block" role="status">
+                                        <span class="sr-only">Loading...</span>
+                                    </div>
+                                </div>
+                            }
                         </div>
                     </form>
                 </div>
