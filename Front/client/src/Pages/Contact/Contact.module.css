@@ -30,6 +30,6 @@
   box-shadow: none;
   background-color: var(--gray-color);
 }
-::placeholder {
-  color: white !important;
+.place::placeholder {
+  color: white;
 }
