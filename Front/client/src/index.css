@@ -7,7 +7,7 @@ body {
   --main-color: #912b22;
   --bg-color: #e3d5bb;
   --secondary-color: #191e21;
-  --gray-color: #7e7373;
+  --gray-color: #7e737385;
 }
 ::-webkit-scrollbar {
   background-color: var(--bg-color);

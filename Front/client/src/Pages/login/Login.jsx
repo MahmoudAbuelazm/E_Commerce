@@ -1,10 +1,10 @@
 // @ts-nocheck
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Style from "./login.module.css";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
-function Login() {
+function Login(props) {
   let navigate = useNavigate();
   const [message, setMessage] = useState("");
   const [isLoading, setisLoading] = useState(false);
@@ -40,6 +40,13 @@ function Login() {
         setisLoading(false);
       });
   };
+  useEffect(() => {
+    props.show(false)
+    return () => {
+
+      props.show(true)
+    }
+  }, [props])
 
   return (
     <>

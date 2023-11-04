@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Style from "../login/login.module.css";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
-function Rresetpaswword() {
+function Rresetpaswword(props) {
   const [user, setUser] = useState({
     email: "",
     password: "",
@@ -35,6 +35,13 @@ function Rresetpaswword() {
 
     e.preventDefault();
   };
+  useEffect(() => {
+    props.show(false)
+    return () => {
+
+      props.show(true)
+    }
+  }, [props])
 
   return (
     <>

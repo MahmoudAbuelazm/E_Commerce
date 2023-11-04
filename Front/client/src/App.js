@@ -1,5 +1,6 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { lazy, Suspense, useState } from "react";
+import Footer from "Pages/Footer/Footer";
 
 // Import your components
 const Navbar = lazy(() => import("Pages/Navbar/Navbar"));
@@ -14,8 +15,10 @@ const Rresetpaswword = lazy(() =>
 );
 const Home = lazy(() => import("Pages/Home/Home"));
 const Notfound = lazy(() => import("Pages/Notfound/Notfound"));
+const Contact = lazy(() => import("Pages/Contact/Contact"));
 
 function App() {
+  const [ShowFooter, setShowFooter] = useState(true);
   return (
     <Suspense
       fallback={
@@ -35,12 +38,20 @@ function App() {
           <Route path={path} element={<Home />} key={index} />
         ))}
         <Route path="home" element={<Home />} />
-        <Route path="login" element={<Login />} />
-        <Route path="forgetpassword" element={<Forgetpassword />} />
-        <Route path="resetpassword" element={<Rresetpaswword />} />
-        <Route path="signup" element={<Signup />} />
-        <Route path="*" element={<Notfound />} />
+        <Route path="login" element={<Login show={setShowFooter} />} />
+        <Route
+          path="forgetpassword"
+          element={<Forgetpassword show={setShowFooter} />}
+        />
+        <Route
+          path="resetpassword"
+          element={<Rresetpaswword show={setShowFooter} />}
+        />
+        <Route path="signup" element={<Signup show={setShowFooter} />} />
+        <Route path="contact" element={<Contact />} />
+        <Route path="*" element={<Notfound show={setShowFooter} />} />
       </Routes>
+      {ShowFooter ? <Footer /> : ""}
     </Suspense>
   );
 }
