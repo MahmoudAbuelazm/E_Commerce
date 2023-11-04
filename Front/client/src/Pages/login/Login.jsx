@@ -36,10 +36,9 @@ function Login() {
         }
       })
       .catch((err) => {
-        console.log(err)
-        setisLoading(false)
-      }
-      );
+        console.log(err);
+        setisLoading(false);
+      });
   };
 
   return (
@@ -94,14 +93,21 @@ function Login() {
               {message && <div className={`${Style.message}`}>{message}</div>}
               <div className={Style.submit}>
                 <button className={Style.btn} type="submit">
-                  {isLoading ? <i className="fas fa-spinner fa-spin"></i> : "login"}
+                  {isLoading ? (
+                    <i className="fas fa-spinner fa-spin"></i>
+                  ) : (
+                    "login"
+                  )}
                 </button>
                 <Link to={"/forgetpassword"}>forget password</Link>
               </div>
               <p className={`mt-4 text-center ${Style.last} `}>
                 don`t have an acount
-                <Link to={"/signup"} className={`m-2 mt-3 text-center`}
-                  style={{ color: '#912b22' }}>
+                <Link
+                  to={"/signup"}
+                  className={`m-2 mt-3 text-center`}
+                  style={{ color: "#912b22" }}
+                >
                   Sign up
                 </Link>
               </p>
