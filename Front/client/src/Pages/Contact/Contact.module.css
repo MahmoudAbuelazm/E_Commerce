@@ -30,6 +30,16 @@
   box-shadow: none;
   background-color: var(--gray-color);
 }
-::placeholder {
-  color: white !important;
+.place::placeholder {
+  color: white;
+}
+
+.message {
+  text-align: left;
+  color: red;
+  width: 100%;
+  font-size: 14px;
+  margin: 15px 0px;
+  border-left: 2px solid red;
+  padding-left: 10px;
 }

@@ -36,10 +36,9 @@ function Login(props) {
         }
       })
       .catch((err) => {
-        console.log(err)
-        setisLoading(false)
-      }
-      );
+        console.log(err);
+        setisLoading(false);
+      });
   };
   useEffect(() => {
     props.show(false)
@@ -101,14 +100,30 @@ function Login(props) {
               {message && <div className={`${Style.message}`}>{message}</div>}
               <div className={Style.submit}>
                 <button className={Style.btn} type="submit">
-                  {isLoading ? <i className="fas fa-spinner fa-spin"></i> : "login"}
+                  {!isLoading ?
+                    <div
+                      style={{ background: "#912b22" }}
+                      className="text-white align-self-end"
+                    >
+                      login
+                    </div>
+                    :
+                    <div style={{ background: "#912b22" }} className="justify-content-center rounded-3 align-self-end">
+                      <div class="spinner-border text-white mx-auto d-block" role="status">
+                        <span class="sr-only">Loading...</span>
+                      </div>
+                    </div>
+                  }
                 </button>
                 <Link to={"/forgetpassword"}>forget password</Link>
               </div>
               <p className={`mt-4 text-center ${Style.last} `}>
                 don`t have an acount
-                <Link to={"/signup"} className={`m-2 mt-3 text-center`}
-                  style={{ color: '#912b22' }}>
+                <Link
+                  to={"/signup"}
+                  className={`m-2 mt-3 text-center`}
+                  style={{ color: "#912b22" }}
+                >
                   Sign up
                 </Link>
               </p>
