@@ -1,7 +1,7 @@
 // @ts-nocheck
-import React from "react";
+import React, { useEffect } from "react";
 import { AiOutlineHeart } from "react-icons/ai";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { FreeMode } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
@@ -9,7 +9,16 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 import './products.css';
+import axios from "axios";
 const ProductDetails = () => {
+    let { id } = useParams()
+    useEffect(() => {
+        const getproduct = () => {
+            axios.get(`https://backend-kappa-beige.vercel.app/${id}`).then((resp) => { console.log(resp.data) }).catch((err) => { console.log(err.data) })
+        }
+        getproduct();
+    }, [id])
+
     return (
         <div className="container py-3  my-4">
             <nav aria-label="breadcrumb">

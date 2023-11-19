@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import "./Home.css";
 import {
     A11y,
@@ -17,16 +17,25 @@ import { AiOutlineHeart, AiTwotoneStar } from "react-icons/ai";
 import axios from "axios";
 const Home = () => {
     const [allProducts, setallProducts] = useState([]);
+    const [newprice, setnewprice] = useState('')
+    const navigate = useNavigate()
     const getProduccts = () => {
-        axios.get("https://backend-kappa-beige.vercel.app/product")
+        axios.get("https://backend-kappa-beige.vercel.app/product?page=1")
             .then((respo) => {
-                console.log(respo.data)
-                setallProducts(respo.data)
+                setallProducts(respo.data.result)
+                setnewprice(respo.data.result)
+                console.log(allProducts);
+                console.log(newprice);
             })
             .catch((err) => {
                 console.log(err);
             });
     };
+
+    useEffect(() => {
+        getProduccts()
+    }, [])
+
     return (
         <>
             <div className="container py-5">
@@ -613,102 +622,27 @@ const Home = () => {
                         className="row justify-content-center products"
                         style={{ gap: "30px" }}
                     >
-                        <div className="col-3 card" style={{ width: "305px" }}>
-                            <div className="img_container">
-                                <img src="coat.png" className="card-img-top" alt="..." />
-                                <div className="btn btn-dark">Add To Cart</div>
-                                <AiOutlineHeart />
-                            </div>
-                            <div className="card-body">
-                                <p>coat canada</p>
-                                <span>
-                                    300$ <b>360$</b>
-                                </span>
-                                <div className="star">
-                                    <AiTwotoneStar />
-                                    <AiTwotoneStar />
-                                    <AiTwotoneStar />
-                                    <AiTwotoneStar />
-                                    <AiTwotoneStar />
+                        {allProducts.map((prod, ind) => {
+                            return (
+                                <div className="col-3 card" style={{ width: "305px" }} key={ind}>
+                                    <div className="img_container" onClick={() => navigate(`/view/${prod.id}`)}>
+                                        <img src={prod.defaultImage.url} className="card-img-top" alt="..." />
+                                        <div className="btn btn-dark">Add To Cart</div>
+                                        <AiOutlineHeart />
+                                        {prod.status === 'new' ? <div className="new">
+                                            new
+                                        </div> : ''}
+                                    </div>
+                                    <div className="card-body">
+                                        <p>{prod.name}</p>
+                                        <span>
+                                            {prod.price - (prod.price * (prod.discount / 100))} <b>{prod.price} </b>
+                                        </span>
+                                        <span>availableItems : {prod.availableItems}</span>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
-                        <div className="col-3 card" style={{ width: "305px" }}>
-                            <div className="img_container">
-                                <img src="coat.png" className="card-img-top" alt="..." />
-                                <div className="btn btn-dark">Add To Cart</div>
-                            </div>
-                            <div className="card-body">
-                                <p>coat canada</p>
-                                <span>
-                                    300$ <b>360$</b>
-                                </span>
-                                <div className="star">
-                                    <AiTwotoneStar />
-                                    <AiTwotoneStar />
-                                    <AiTwotoneStar />
-                                    <AiTwotoneStar />
-                                    <AiTwotoneStar />
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col-3 card" style={{ width: "305px" }}>
-                            <div className="img_container">
-                                <img src="coat.png" className="card-img-top" alt="..." />
-                                <div className="btn btn-dark">Add To Cart</div>
-                            </div>
-                            <div className="card-body">
-                                <p>coat canada</p>
-                                <span>
-                                    300$ <b>360$</b>
-                                </span>
-                                <div className="star">
-                                    <AiTwotoneStar />
-                                    <AiTwotoneStar />
-                                    <AiTwotoneStar />
-                                    <AiTwotoneStar />
-                                    <AiTwotoneStar />
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col-3 card" style={{ width: "305px" }}>
-                            <div className="img_container">
-                                <img src="coat.png" className="card-img-top" alt="..." />
-                                <div className="btn btn-dark">Add To Cart</div>
-                            </div>
-                            <div className="card-body">
-                                <p>coat canada</p>
-                                <span>
-                                    300$ <b>360$</b>
-                                </span>
-                                <div className="star">
-                                    <AiTwotoneStar />
-                                    <AiTwotoneStar />
-                                    <AiTwotoneStar />
-                                    <AiTwotoneStar />
-                                    <AiTwotoneStar />
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col-3 card" style={{ width: "305px" }}>
-                            <div className="img_container">
-                                <img src="coat.png" className="card-img-top" alt="..." />
-                                <div className="btn btn-dark">Add To Cart</div>
-                            </div>
-                            <div className="card-body">
-                                <p>coat canada</p>
-                                <span>
-                                    300$ <b>360$</b>
-                                </span>
-                                <div className="star">
-                                    <AiTwotoneStar />
-                                    <AiTwotoneStar />
-                                    <AiTwotoneStar />
-                                    <AiTwotoneStar />
-                                    <AiTwotoneStar />
-                                </div>
-                            </div>
-                        </div>
+                            )
+                        })}
                     </div>
                 </div>
             </div>
