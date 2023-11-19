@@ -1,0 +1,99 @@
+.info p {
+  color: var(--main-color);
+  font-size: 1rem;
+  font-weight: 600;
+  padding-left: 2rem;
+  position: relative;
+}
+.info p::before {
+  content: "";
+  position: absolute;
+  width: 20px;
+  height: 40px;
+  background: var(--main-color);
+  border-radius: 5px;
+  left: 0px;
+  bottom: -10px;
+}
+.info b {
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--secondary-color);
+}
+.buton .btn {
+  padding: 17px 50px;
+  background-color: var(--main-color);
+  font-size: 1rem;
+  color: white;
+  border-radius: 16px;
+}
+.swiper {
+  width: 100%;
+  height: 100%;
+  border-radius: 13px;
+}
+.selling .swiper-slide .card {
+  cursor: grab;
+}
+.selling .swiper-slide .card .card-body {
+  text-align: start;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  background-color: var(--bg-color) !important;
+}
+.selling .swiper-slide .card .card-body p {
+  margin: 0;
+}
+.selling .swiper-slide .card .card-body span {
+  color: #912b22;
+}
+.selling .swiper-slide .card .card-body span b {
+  text-decoration: line-through;
+  color: black;
+  opacity: 0.5;
+  font-weight: 400;
+  margin-left: 12px;
+}
+
+.img_container {
+  position: relative;
+  overflow: hidden;
+  height: 300px;
+  display: flex;
+}
+.img_container:hover img {
+  transform: translateY(-30px);
+}
+.img_container img {
+  width: 160px !important;
+  display: block;
+  margin: 0 auto;
+  padding: 20px 0;
+  transition: 0.3s;
+  align-self: center;
+}
+.img_container .btn {
+  position: absolute;
+  width: 100%;
+  padding: 10px 0;
+  background-color: var(--secondary-color);
+  bottom: -50px;
+  left: 0;
+  transition: 0.3s;
+}
+.img_container svg {
+  position: absolute;
+  top: 5px;
+  right: 7px;
+  width: 32px;
+  height: 32px;
+  background-color: #d9d9d9;
+  border-radius: 50%;
+  padding: 3px;
+  color: var(--secondary-color);
+  cursor: pointer;
+}
+.img_container:hover .btn {
+  bottom: 0px;
+}

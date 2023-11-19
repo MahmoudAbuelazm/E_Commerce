@@ -10,9 +10,8 @@ body {
   --gray-color: #7e737385;
 }
 ::-webkit-scrollbar {
-  background-color: var(--bg-color);
+ display: none;
 }
 ::-webkit-scrollbar-thumb {
-  background-color: var(--secondary-color);
-  border-radius: 15px;
+  display: none;
 }

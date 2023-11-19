@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "./Home.css";
 import {
@@ -14,8 +14,19 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 import { AiOutlineHeart, AiTwotoneStar } from "react-icons/ai";
-import Footer from "Pages/Footer/Footer";
+import axios from "axios";
 const Home = () => {
+    const [allProducts, setallProducts] = useState([]);
+    const getProduccts = () => {
+        axios.get("https://backend-kappa-beige.vercel.app/product")
+            .then((respo) => {
+                console.log(respo.data)
+                setallProducts(respo.data)
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+    };
     return (
         <>
             <div className="container py-5">
@@ -78,10 +89,7 @@ const Home = () => {
                                             className="bi bi-arrow-right"
                                             viewBox="0 0 16 16"
                                         >
-                                            <path
-
-                                                d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"
-                                            />
+                                            <path d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z" />
                                         </svg>
                                     </div>
                                 </div>
@@ -327,7 +335,7 @@ const Home = () => {
                                 <path d="M11 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h6zM5 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H5z" />
                                 <path d="M8 14a1 1 0 1 0 0-2 1 1 0 0 0 0 2z" />
                             </svg>
-                            <p>Phone</p>
+                            <p>electronics</p>
                         </div>
                         <div className="item ">
                             <svg
@@ -341,7 +349,7 @@ const Home = () => {
                                 <path d="M11 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h6zM5 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H5z" />
                                 <path d="M8 14a1 1 0 1 0 0-2 1 1 0 0 0 0 2z" />
                             </svg>
-                            <p>Phone</p>
+                            <p>clothes</p>
                         </div>
                         <div className="item ">
                             <svg
@@ -355,7 +363,7 @@ const Home = () => {
                                 <path d="M11 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h6zM5 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H5z" />
                                 <path d="M8 14a1 1 0 1 0 0-2 1 1 0 0 0 0 2z" />
                             </svg>
-                            <p>Phone</p>
+                            <p>accessories</p>
                         </div>
                         <div className="item ">
                             <svg
@@ -412,7 +420,7 @@ const Home = () => {
                         </div>
                     </div>
                     <Swiper
-                        slidesPerView={3.4}
+                        slidesPerView={3.5}
                         spaceBetween={10}
                         freeMode={true}
                         modules={[FreeMode]}
@@ -421,7 +429,11 @@ const Home = () => {
                         <SwiperSlide>
                             <div className="card">
                                 <div className="img_container">
-                                    <img src="coat.png" className="card-img-top" alt="..." />
+                                    <img
+                                        src={require("../../Images/xbox-black front.jpg")}
+                                        className="card-img-top"
+                                        alt="..."
+                                    />
                                     <div className="btn btn-dark">Add To Cart</div>
                                     <AiOutlineHeart />
                                 </div>
@@ -443,7 +455,11 @@ const Home = () => {
                         <SwiperSlide>
                             <div className="card">
                                 <div className="img_container">
-                                    <img src="coat.png" className="card-img-top" alt="..." />
+                                    <img
+                                        src={require("../../Images/xbox-blue front.jpg")}
+                                        className="card-img-top"
+                                        alt="..."
+                                    />
                                     <div className="btn btn-dark">Add To Cart</div>
                                 </div>
                                 <div className="card-body">
@@ -464,7 +480,11 @@ const Home = () => {
                         <SwiperSlide>
                             <div className="card">
                                 <div className="img_container">
-                                    <img src="coat.png" className="card-img-top" alt="..." />
+                                    <img
+                                        src={require("../../Images/coat front.jpg")}
+                                        className="card-img-top"
+                                        alt="..."
+                                    />
                                     <div className="btn btn-dark">Add To Cart</div>
                                 </div>
                                 <div className="card-body">
@@ -485,29 +505,11 @@ const Home = () => {
                         <SwiperSlide>
                             <div className="card">
                                 <div className="img_container">
-                                    <img src="coat.png" className="card-img-top" alt="..." />
-                                    <div className="btn btn-dark">Add To Cart</div>
-
-                                </div>
-                                <div className="card-body">
-                                    <p>coat canada</p>
-                                    <span>
-                                        300$ <b>360$</b>
-                                    </span>
-                                    <div className="star">
-                                        <AiTwotoneStar />
-                                        <AiTwotoneStar />
-                                        <AiTwotoneStar />
-                                        <AiTwotoneStar />
-                                        <AiTwotoneStar />
-                                    </div>
-                                </div>
-                            </div>
-                        </SwiperSlide>
-                        <SwiperSlide>
-                            <div className="card">
-                                <div className="img_container">
-                                    <img src="coat.png" className="card-img-top" alt="..." />
+                                    <img
+                                        src={require("../../Images/lcd front.jpg")}
+                                        className="card-img-top"
+                                        alt="..."
+                                    />
                                     <div className="btn btn-dark">Add To Cart</div>
                                 </div>
                                 <div className="card-body">
@@ -528,7 +530,35 @@ const Home = () => {
                         <SwiperSlide>
                             <div className="card">
                                 <div className="img_container">
-                                    <img src="coat.png" className="card-img-top" alt="..." />
+                                    <img
+                                        src={require("../../Images/spray front.jpg")}
+                                        alt="..."
+                                    />
+                                    <div className="btn btn-dark">Add To Cart</div>
+                                </div>
+                                <div className="card-body">
+                                    <p>coat canada</p>
+                                    <span>
+                                        300$ <b>360$</b>
+                                    </span>
+                                    <div className="star">
+                                        <AiTwotoneStar />
+                                        <AiTwotoneStar />
+                                        <AiTwotoneStar />
+                                        <AiTwotoneStar />
+                                        <AiTwotoneStar />
+                                    </div>
+                                </div>
+                            </div>
+                        </SwiperSlide>
+                        <SwiperSlide>
+                            <div className="card">
+                                <div className="img_container">
+                                    <img
+                                        src={require("../../Images/watch front.jpg")}
+                                        className="card-img-top"
+                                        alt="..."
+                                    />
                                     <div className="btn btn-dark">Add To Cart</div>
                                 </div>
                                 <div className="card-body">
@@ -683,6 +713,7 @@ const Home = () => {
                 </div>
             </div>
             <div className="divider"></div>
+            {/* delivery  */}
             <div className="container py-5">
                 <div className="delivery d-flex justify-content-center align-items-center gap-5">
                     <div className="first d-flex align-items-center flex-column">

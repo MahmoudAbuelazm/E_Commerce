@@ -1,6 +1,7 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { lazy, Suspense, useState } from "react";
 import Footer from "Pages/Footer/Footer";
+import ProductDetails from "Pages/productDetails/ProductDetails";
 
 // Import your components
 const Navbar = lazy(() => import("Pages/Navbar/Navbar"));
@@ -49,6 +50,7 @@ function App() {
         />
         <Route path="signup" element={<Signup show={setShowFooter} />} />
         <Route path="contact" element={<Contact />} />
+        <Route path="view" element={<ProductDetails />} />
         <Route path="*" element={<Notfound show={setShowFooter} />} />
       </Routes>
       {ShowFooter ? <Footer /> : ""}

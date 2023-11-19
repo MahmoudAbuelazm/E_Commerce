@@ -147,7 +147,7 @@
 }
 .selling .swiper-slide .card {
   width: 100% !important;
-  background-color: #f4d291;
+  background-color: #ffffff;
   border: none;
   margin-right: 20px;
 }
@@ -156,16 +156,19 @@
 .img_container {
   position: relative;
   overflow: hidden;
+  height: 300px;
+  display: flex;
 }
 .img_container:hover img {
   transform: translateY(-30px);
 }
 .img_container img {
-  width: 200px;
+  width: 160px !important;
   display: block;
   margin: 0 auto;
   padding: 20px 0;
   transition: 0.3s;
+  align-self: center;
 }
 .img_container .btn {
   position: absolute;
@@ -195,11 +198,7 @@
   color: white;
 }
 /* start selling  */
-.selling .swiper-slide .card img {
-  width: 200px;
-  align-self: center;
-  padding: 20px 0;
-}
+
 .selling .swiper-slide .card .card-body {
   text-align: start;
   display: flex;
@@ -227,7 +226,7 @@
 }
 /* all products style  */
 .all_products .card {
-  background-color: #f4d291;
+  background-color: #ffffff;
   border: none;
   padding: 0;
 }
