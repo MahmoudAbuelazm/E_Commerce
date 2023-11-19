@@ -9,10 +9,10 @@ const Navbar = lazy(() => import("Pages/Navbar/Navbar"));
 const Login = lazy(() => import("Pages/login/Login"));
 const Signup = lazy(() => import("Pages/Signup/Signup"));
 const Forgetpassword = lazy(() =>
-import("Pages/Forgetpassword/Forgetpassword")
+  import("Pages/Forgetpassword/Forgetpassword")
 );
 const Rresetpaswword = lazy(() =>
-import("Pages/Rresetpaswword/Rresetpaswword")
+  import("Pages/Rresetpaswword/Rresetpaswword")
 );
 const Home = lazy(() => import("Pages/Home/Home"));
 const Notfound = lazy(() => import("Pages/Notfound/Notfound"));
@@ -51,12 +51,10 @@ function App() {
         />
         <Route path="signup" element={<Signup show={setShowFooter} />} />
         <Route path="contact" element={<Contact />} />
-<<<<<<< HEAD
-        <Route path="view" element={<ProductDetails />} />
-=======
-        <Route path="cart" element={<Cart />} />
 
->>>>>>> 38612f57cb12b7b9942773fdc3b40309728b1603
+        <Route path="view" element={<ProductDetails />} />
+
+        <Route path="cart" element={<Cart />} />
         <Route path="*" element={<Notfound show={setShowFooter} />} />
       </Routes>
       {ShowFooter ? <Footer /> : ""}
