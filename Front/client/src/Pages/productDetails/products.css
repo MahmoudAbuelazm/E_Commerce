@@ -97,3 +97,10 @@
 .img_container:hover .btn {
   bottom: 0px;
 }
+.count {
+  border-radius: 2px;
+}
+.count:active {
+  border: none !important;
+  box-shadow: inset 1px 1px 4px 0px #483232d7;
+}

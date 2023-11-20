@@ -52,7 +52,7 @@ function App() {
         <Route path="signup" element={<Signup show={setShowFooter} />} />
         <Route path="contact" element={<Contact />} />
 
-        <Route path="view" element={<ProductDetails />} />
+        <Route path="view/:id" element={<ProductDetails />} />
 
         <Route path="cart" element={<Cart />} />
         <Route path="*" element={<Notfound show={setShowFooter} />} />

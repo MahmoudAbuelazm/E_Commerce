@@ -1,5 +1,5 @@
 // @ts-nocheck
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { AiOutlineHeart } from "react-icons/ai";
 import { Link, useParams } from "react-router-dom";
 import { FreeMode } from "swiper/modules";
@@ -12,13 +12,34 @@ import './products.css';
 import axios from "axios";
 const ProductDetails = () => {
     let { id } = useParams()
+    const [item, setItem] = useState(null)
+    const [value, setvalue] = useState(1)
+    const [fav, setfav] = useState(false)
+    const [image, setimage] = useState('one')
+    const increse = () => {
+        setvalue(value + 1)
+    }
+    const decrese = () => {
+        setvalue((prevValue) => (prevValue >= 2 ? prevValue - 1 : 1));
+
+    }
     useEffect(() => {
-        const getproduct = () => {
-            axios.get(`https://backend-kappa-beige.vercel.app/${id}`).then((resp) => { console.log(resp.data) }).catch((err) => { console.log(err.data) })
+        const getProduct = () => {
+            axios.get(`https://backend-kappa-beige.vercel.app/product/single/${id}`)
+                .then((resp) => {
+                    console.log(resp.data)
+                    setItem(resp.data.result)
+                })
+                .catch((err) => {
+                    console.log(err)
+                })
         }
-        getproduct();
+        getProduct()
     }, [id])
 
+    if (!item) {
+        return <div>Loading...</div>
+    }
     return (
         <div className="container py-3  my-4">
             <nav aria-label="breadcrumb">
@@ -34,7 +55,7 @@ const ProductDetails = () => {
                         </Link>
                     </li>
                     <li className="breadcrumb-item active text-black" aria-current="page">
-                        gamepad
+                        {item.name}
                     </li>
                 </ol>
             </nav>
@@ -43,19 +64,28 @@ const ProductDetails = () => {
                     <div className="card h-100 bg-transparent border-0">
                         <div className="card-body p-0 gap-3 d-flex flex-column ">
                             <img
-                                src={require("Images/xbox-black back.jpg")}
+                                src={item.image[0].url}
                                 alt=""
                                 width="100%"
+                                height='200px'
+                                onClick={() => setimage('two')}
+                                style={{ cursor: "pointer" }}
                             />
                             <img
-                                src={require("Images/xbox-black side.jpg")}
+                                src={item.defaultImage.url}
                                 alt=""
                                 width="100%"
+                                height='200px'
+                                onClick={() => setimage('one')}
+                                style={{ cursor: "pointer" }}
                             />
                             <img
-                                src={require("Images/xbox-black front.jpg")}
+                                src={item.image[1].url}
                                 alt=""
                                 width="100%"
+                                height='200px'
+                                onClick={() => setimage('three')}
+                                style={{ cursor: "pointer" }}
                             />
                         </div>
                     </div>
@@ -63,18 +93,37 @@ const ProductDetails = () => {
                 <div className="col-sm-6 col-md-5">
                     <div className="card h-100">
                         <div className="card-body d-flex align-items-center">
-                            <img
-                                src={require("Images/xbox-black side.jpg")}
-                                alt=""
-                                width="100%"
-                            />
+                            {image === 'one' ?
+                                <img
+                                    src={item.defaultImage.url}
+                                    alt=""
+                                    width="100%"
+                                    height='600px'
+                                />
+                                : image === 'two' ?
+                                    <img
+                                        src={item.image[0].url}
+                                        alt=""
+                                        width="100%"
+                                        height='600px'
+                                    />
+                                    :
+                                    image === 'three' ?
+                                        <img
+                                            src={item.image[1].url}
+                                            alt=""
+                                            width="100%"
+                                            height='600px'
+                                        />
+                                        : ''
+                            }
                         </div>
                     </div>
                 </div>
                 <div className="col-sm-6 col-md-4">
                     <div className="card bg-transparent border-0 h-100">
                         <div className="card-body">
-                            <h3 className="card-title">Special title treatment</h3>
+                            <h3 className="card-title">{item.name}</h3>
                             <p
                                 className="card-text pt-2"
                                 style={{ color: "#00FF66", opacity: ".6" }}
@@ -82,24 +131,22 @@ const ProductDetails = () => {
                                 in stock
                             </p>
                             <p className="card-text fs-4">
-                                500${" "}
+                                {item.price - (item.price * (item.discount / 100))} $
                                 <s className="mx-3" style={{ color: "#7C7C7C" }}>
-                                    500$
+                                    {item.price} $
                                 </s>
                             </p>
                             <p>
-                                PlayStation 5 Controller Skin High quality vinyl with air
-                                channel adhesive for easy bubble free install & mess free
-                                removal Pressure sensitive.
+                                {item.description}
                             </p>
                             <hr />
                             <div className="mt-4 d-flex align-items-center gap-4">
                                 <span className="border border-black rounded-1 d-flex align-items-center">
-                                    <div className="btn">-</div>
+                                    <div onClick={() => decrese()} className="btn count">-</div>
                                     <big className="px-4 border-start border-end border-dark">
-                                        3
+                                        {value}
                                     </big>
-                                    <div className="btn">+</div>
+                                    <div onClick={() => increse()} className="btn count">+</div>
                                 </span>
                                 <span>
                                     <div
@@ -109,17 +156,25 @@ const ProductDetails = () => {
                                         buy now
                                     </div>
                                 </span>
-                                <span className=" border border-dark p-2 rounded-2">
-                                    <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        width="30"
-                                        height="30"
-                                        fill="currentColor"
-                                        className="bi bi-heart"
-                                        viewBox="0 0 16 16"
-                                    >
-                                        <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
-                                    </svg>
+                                <span className=" border border-dark p-2 rounded-2" >
+                                    {fav ?
+                                        <svg onClick={() => setfav(false)} xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" className="bi bi-heart-fill" viewBox="0 0 16 16" style={{ fill: "var(--main-color)", cursor: 'pointer' }}>
+                                            <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z" />
+                                        </svg>
+                                        :
+                                        <svg
+                                            onClick={() => setfav(true)}
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            width="30"
+                                            height="30"
+                                            fill="currentColor"
+                                            className="bi bi-heart"
+                                            viewBox="0 0 16 16"
+                                            style={{ cursor: 'pointer' }}
+                                        >
+                                            <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
+                                        </svg>
+                                    }
                                 </span>
                             </div>
                             <div className="border border-dark mt-4 rounded-2">
