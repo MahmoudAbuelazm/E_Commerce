@@ -4,14 +4,19 @@ import axios from "axios";
 import Style from "./signup.module.css";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import swal from "sweetalert";
+
 function Signup(props) {
   let navigate = useNavigate();
+
+  const [isLoading, setisLoading] = useState(false);
   const [message, setMessage] = useState("");
   const [user, setUser] = useState({
     userName: "",
     email: "",
     password: "",
     confirmPassword: "",
+    role: "user",
   });
 
   let handleChange = (e) => {
@@ -24,26 +29,32 @@ function Signup(props) {
   };
 
   let signup = async (e) => {
+    setisLoading(true);
     e.preventDefault();
     const response = await axios
       .post("https://backend-kappa-beige.vercel.app/auth/register", user)
       .then((res) => {
+        setisLoading(false);
         console.log(res.data);
         setMessage(res.data.message);
         if (res.data.success) {
-          navigate("/login");
+          swal(`${message}`).then(() => {
+            navigate("/login");
+          });
         }
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        setisLoading(false);
+        console.log(err);
+      });
     console.log(response);
   };
   useEffect(() => {
-    props.show(false)
+    props.show(false);
     return () => {
-
-      props.show(true)
-    }
-  }, [props])
+      props.show(true);
+    };
+  }, [props]);
 
   return (
     <>
@@ -110,13 +121,41 @@ function Signup(props) {
                   onChange={handleChange}
                 />
               </div>
+              <select
+                size="2"
+                class="form-floating"
+                className={Style.select}
+                id="role"
+                name="role"
+                value={user.usertype}
+                onChange={handleChange}
+              >
+                <option value="user">User</option>
+                <option value="admin">Admin</option>
+              </select>
               {message && <div className={`${Style.message}`}>{message}</div>}
 
               <div className={Style.submit}>
-                <button type="submit">Create Acount</button>
+                <button style={{ cursor: "pointer" }} type="submit">
+                  {isLoading ? (
+                    <div
+                      style={{ background: "#912b22" }}
+                      className="justify-content-center align-self-end"
+                    >
+                      <div
+                        class="spinner-border text-white mx-auto d-block"
+                        role="status"
+                      >
+                        <span class="sr-only">Loading...</span>
+                      </div>
+                    </div>
+                  ) : (
+                    <p>Create Account</p>
+                  )}
+                </button>
                 <Link
-                  to={'https://backend-kappa-beige.vercel.app/auth/google'}
-                // onClick=s{signupWithGoogle}
+                  to={"https://backend-kappa-beige.vercel.app/auth/google"}
+                  // onClick=s{signupWithGoogle}
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -136,15 +175,15 @@ function Signup(props) {
                 <Link
                   to={"/login"}
                   className={`m-2 mt-3 text-center`}
-                  style={{ color: '#912b22' }}
+                  style={{ color: "#912b22" }}
                 >
                   Login
                 </Link>
               </p>
             </form>
           </div>
-        </div >
-      </div >
+        </div>
+      </div>
     </>
   );
 }
