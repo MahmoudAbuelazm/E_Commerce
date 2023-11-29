@@ -419,7 +419,7 @@ const Home = () => {
                         </div>
                     </div>
                 </div>
-                <div style={{ margin: "100px 0" }} className="selling">
+                {/* <div style={{ margin: "100px 0" }} className="selling">
                     <div className="info d-flex justify-content-between align-items-center mb-5">
                         <div className="r">
                             <p>This Month</p>
@@ -608,7 +608,7 @@ const Home = () => {
                             </div>
                         </SwiperSlide>
                     </Swiper>
-                </div>
+                </div> */}
                 <div style={{ margin: "100px 0" }} className="all_products">
                     <div className="info d-flex justify-content-between align-items-center mb-5">
                         <div className="r">
@@ -629,7 +629,7 @@ const Home = () => {
                                     <div className="img_container" onClick={() => navigate(`/view/${prod.id}`)}>
                                         <img src={prod.defaultImage.url} className="card-img-top" alt="..." />
                                         <div className="btn btn-dark">Add To Cart</div>
-                                        <AiOutlineHeart />
+                                        {/* <AiOutlineHeart /> */}
                                         {prod.status === 'new' ? <div className="new">
                                             new
                                         </div> : ''}
