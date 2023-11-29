@@ -73,7 +73,7 @@ function Navbar() {
                   }}
                   className={`nav-link ${activeLink === "login" ? `${Style.active}` : ""
                     }`}
-                  to={"login"}
+                  to={"/login"}
                 >
                   Login
                 </Link>

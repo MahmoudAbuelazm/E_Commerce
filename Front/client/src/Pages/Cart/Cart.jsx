@@ -1,17 +1,20 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import style from './Cart.module.css';
 import monitor from '../../Images/pngegg.png'
 import controller from '../../Images/pngegg (1).png'
 import { Link } from 'react-router-dom';
+import { RiCoupon3Line } from "react-icons/ri";
+import { useSelector } from 'react-redux';
 const Cart = () => {
+    const cartItems = useSelector((state) => state.cart.cartItems);
     return (
         <>
 
             <div className={`container `}>
                 <nav aria-label={`breadcrumb `}>
                     <ol className={`breadcrumb m ${style.m}`}>
-                        <li className="breadcrumb-item active" aria-current="page">Home</li>
-                        <li className="breadcrumb-item">Cart</li>
+                        <Link to={"/home"} className={`breadcrumb-item ${style.home}`} aria-current="page">Home</Link>
+                        <Link to={"/cart"} className={`breadcrumb-item active ${style.cart}`}>Cart</Link>
                     </ol>
                 </nav>
 
@@ -23,6 +26,11 @@ const Cart = () => {
                         <div className='col-3 d-flex justify-content-center align-items-center'>Subtotal</div>
                     </div>
                 </div>
+                {cartItems.map((item, index) => (
+                    <li key={index}>
+                        <h1>{item.title}</h1>
+                    </li>
+                ))}
                 <div className ={`box container d-grid align-content-center mt-5 ${style.box}`}  >
                     <div className='row'>
                         <div className='col-3 d-flex justify-content-center align-items-center'>
@@ -32,7 +40,7 @@ const Cart = () => {
 
                         <div className='col-3 d-flex justify-content-center align-items-center  align-self-center'>$650</div>
                         <div className='col-3 d-flex justify-content-center align-items-center align-self-center'>
-                            <input id="number" type="number" value={'01'} />
+                            <input id="number" type="number" value={'01'} className={`${style.quant}`}/>
                         </div>
                         <div className='col-3 d-flex justify-content-center align-items-center align-self-center'>$650</div>
                     </div>

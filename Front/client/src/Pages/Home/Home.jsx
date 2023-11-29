@@ -15,6 +15,7 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 import { AiOutlineHeart, AiTwotoneStar } from "react-icons/ai";
+<<<<<<< Updated upstream
 import axios from "axios";
 const Home = () => {
     const [allProducts, setallProducts] = useState([]);
@@ -37,6 +38,17 @@ const Home = () => {
         getProduccts()
     }, [])
 
+=======
+import Footer from "Pages/Footer/Footer";
+import { useDispatch } from 'react-redux';
+import { addToCart } from '../../components/cartSlice';
+const Home = ({ productData }) => {
+    const dispatch = useDispatch();
+
+    const handleAddToCart = () => {
+        dispatch(addToCart(productData));
+    };
+>>>>>>> Stashed changes
     return (
         <>
             <div className="container py-5">
@@ -439,12 +451,17 @@ const Home = () => {
                         <SwiperSlide>
                             <div className="card">
                                 <div className="img_container">
+<<<<<<< Updated upstream
                                     <img
                                         src={require("../../Images/xbox-black front.jpg")}
                                         className="card-img-top"
                                         alt="..."
                                     />
                                     <div className="btn btn-dark">Add To Cart</div>
+=======
+                                    <img src="coat.png" className="card-img-top" alt="..." />
+                                    <div onClick={handleAddToCart} className="btn btn-dark">Add To Cart</div>
+>>>>>>> Stashed changes
                                     <AiOutlineHeart />
                                 </div>
                                 <div className="card-body">
