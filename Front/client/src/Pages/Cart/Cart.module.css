@@ -6,7 +6,18 @@
     border-radius: 4px;
     padding-left: 2.5rem;
 }
-
+.home{
+    text-decoration: none;
+    color: #000;
+    opacity: 0.5;
+    cursor: pointer;
+}
+.cart {
+    text-decoration: none;
+    color: #000 !important;
+    font-weight: 400;
+    cursor: pointer;
+}
 img {
     width: 44px;
     height: 55px;
@@ -19,12 +30,16 @@ input[type=number] {
     border-color: #00000066;
     border-radius: 4px;
 }
+.quant {
+    padding-left: 23px;
+}
 .copuon {
     width: 19rem;
     height: 3.4rem;
     border: 1px solid #912B22;
     border-radius: 7px;
     background-color: #E3D5BB;
+    padding-left: 15px;
 }
 .copuon::placeholder {
     margin-left: 2rem;
@@ -61,6 +76,7 @@ input[type=number] {
 }
 .m{
     margin: 4rem 0 4rem 5rem;
+    text-decoration: none;
 }
 .subtotal {
     border: none;
