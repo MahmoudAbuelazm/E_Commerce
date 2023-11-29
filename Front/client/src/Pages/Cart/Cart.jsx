@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/alt-text */
 import React, { useEffect, useState } from 'react';
 import style from './Cart.module.css';
 import monitor from '../../Images/pngegg.png'

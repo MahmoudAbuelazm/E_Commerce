@@ -15,12 +15,17 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 import { AiOutlineHeart, AiTwotoneStar } from "react-icons/ai";
-<<<<<<< Updated upstream
+
+import { useDispatch } from 'react-redux';
+import { addToCart } from '../../components/cartSlice';
 import axios from "axios";
-const Home = () => {
+const Home = ({ productData }) => {
     const [allProducts, setallProducts] = useState([]);
     const [newprice, setnewprice] = useState('')
+
     const navigate = useNavigate()
+    const dispatch = useDispatch()
+
     const getProduccts = () => {
         axios.get("https://backend-kappa-beige.vercel.app/product?page=1")
             .then((respo) => {
@@ -34,21 +39,14 @@ const Home = () => {
             });
     };
 
+    const handleAddToCart = () => {
+        dispatch(addToCart(productData));
+    };
     useEffect(() => {
         getProduccts()
     }, [])
 
-=======
-import Footer from "Pages/Footer/Footer";
-import { useDispatch } from 'react-redux';
-import { addToCart } from '../../components/cartSlice';
-const Home = ({ productData }) => {
-    const dispatch = useDispatch();
 
-    const handleAddToCart = () => {
-        dispatch(addToCart(productData));
-    };
->>>>>>> Stashed changes
     return (
         <>
             <div className="container py-5">
@@ -451,17 +449,16 @@ const Home = ({ productData }) => {
                         <SwiperSlide>
                             <div className="card">
                                 <div className="img_container">
-<<<<<<< Updated upstream
+
                                     <img
                                         src={require("../../Images/xbox-black front.jpg")}
                                         className="card-img-top"
                                         alt="..."
                                     />
                                     <div className="btn btn-dark">Add To Cart</div>
-=======
+
                                     <img src="coat.png" className="card-img-top" alt="..." />
                                     <div onClick={handleAddToCart} className="btn btn-dark">Add To Cart</div>
->>>>>>> Stashed changes
                                     <AiOutlineHeart />
                                 </div>
                                 <div className="card-body">
@@ -643,9 +640,9 @@ const Home = ({ productData }) => {
                         {allProducts.map((prod, ind) => {
                             return (
                                 <div className="col-3 card" style={{ width: "305px" }} key={ind}>
-                                    <div className="img_container" onClick={() => navigate(`/view/${prod.id}`)}>
-                                        <img src={prod.defaultImage.url} className="card-img-top" alt="..." />
-                                        <div className="btn btn-dark">Add To Cart</div>
+                                    <div className="img_container">
+                                        <img onClick={() => navigate(`/view/${prod.id}`)} src={prod.defaultImage.url} className="card-img-top" alt="..." />
+                                        <div onClick={handleAddToCart} className="btn btn-dark">Add To Cart</div>
                                         {/* <AiOutlineHeart /> */}
                                         {prod.status === 'new' ? <div className="new">
                                             new
