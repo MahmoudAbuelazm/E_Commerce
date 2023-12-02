@@ -69,7 +69,7 @@ const ProductDetails = () => {
                                 width="100%"
                                 height='200px'
                                 onClick={() => setimage('two')}
-                                style={{ cursor: "pointer" }}
+                                style={{ cursor: "pointer", borderRadius: "7px" }}
                             />
                             <img
                                 src={item.defaultImage.url}
@@ -77,7 +77,7 @@ const ProductDetails = () => {
                                 width="100%"
                                 height='200px'
                                 onClick={() => setimage('one')}
-                                style={{ cursor: "pointer" }}
+                                style={{ cursor: "pointer", borderRadius: "7px" }}
                             />
                             <img
                                 src={item.image[1].url}
@@ -85,7 +85,7 @@ const ProductDetails = () => {
                                 width="100%"
                                 height='200px'
                                 onClick={() => setimage('three')}
-                                style={{ cursor: "pointer" }}
+                                style={{ cursor: "pointer", borderRadius: '7px' }}
                             />
                         </div>
                     </div>
@@ -151,7 +151,7 @@ const ProductDetails = () => {
                                 <span>
                                     <div
                                         className="btn  text-white"
-                                        style={{ background: "var(--main-color)" }}
+                                        style={{ background: "var(--main-color)", minWidth: '100px' }}
                                     >
                                         buy now
                                     </div>
