@@ -18,17 +18,14 @@
     font-weight: 400;
     cursor: pointer;
 }
-img {
-    width: 44px;
-    height: 55px;
+.image {
+    width: 46px;
+    height: 52px;
     margin-right: 1rem;
 }
-input[type=number] {
-    width: 72px;
-    height: 44px;
-    background-color: #E3D5BB;
-    border-color: #00000066;
-    border-radius: 4px;
+.can {
+    font-size: 16px;
+    cursor: pointer;
 }
 .quant {
     padding-left: 23px;

@@ -14,38 +14,35 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
-import { AiOutlineHeart, AiTwotoneStar } from "react-icons/ai";
 
-import { useDispatch } from 'react-redux';
-import { addToCart } from '../../components/cartSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import { addToCart, deleteFromCart } from '../../components/cartSlice';
 import axios from "axios";
-const Home = ({ productData }) => {
+
+const Home = () => {
     const [allProducts, setallProducts] = useState([]);
     const [newprice, setnewprice] = useState('')
-
     const navigate = useNavigate()
     const dispatch = useDispatch()
+    const cart = useSelector((state) => state.cart);
+    
+    useEffect(()=>{
+        const getProduccts =async () => {
 
-    const getProduccts = () => {
-        axios.get("https://backend-kappa-beige.vercel.app/product?page=1")
-            .then((respo) => {
-                setallProducts(respo.data.result)
-                setnewprice(respo.data.result)
-                console.log(allProducts);
-                console.log(newprice);
-            })
-            .catch((err) => {
-                console.log(err);
-            });
-    };
-
-    const handleAddToCart = () => {
-        dispatch(addToCart(productData));
-    };
-    useEffect(() => {
-        getProduccts()
-    }, [])
-
+            axios.get("https://backend-kappa-beige.vercel.app/product?page=1")
+                .then((respo) => {
+                    setallProducts(respo.data.result)
+                    setnewprice(respo.data.result)
+                    console.log(allProducts);
+                    console.log(newprice);
+                })
+                .catch((err) => {
+                    console.log(err);
+                });
+        };
+        getProduccts();
+    },[dispatch])
+    
 
     return (
         <>
@@ -638,11 +635,26 @@ const Home = ({ productData }) => {
                         style={{ gap: "30px" }}
                     >
                         {allProducts.map((prod, ind) => {
+                            const isInCart = cart.some(item => item.id === prod.id);
                             return (
                                 <div className="col-3 card" style={{ width: "305px" }} key={ind}>
+                                    
                                     <div className="img_container">
                                         <img onClick={() => navigate(`/view/${prod.id}`)} src={prod.defaultImage.url} className="card-img-top" alt="..." />
-                                        <div onClick={handleAddToCart} className="btn btn-dark">Add To Cart</div>
+                                        <button 
+                                            onClick={() => {
+                                                if (isInCart) {
+                                                    dispatch(deleteFromCart(prod))
+                                                } else {
+                                                    
+                                                    dispatch(addToCart(prod))
+                                                    
+                                                }
+                                            }}
+                                            className={`btn ${isInCart ? 'btn-danger' : 'btn-dark'}`}>
+                                            {isInCart ? "Remove from Cart" : "Add to Cart"}
+                                            
+                                        </button>
                                         {/* <AiOutlineHeart /> */}
                                         {prod.status === 'new' ? <div className="new">
                                             new
