@@ -5,7 +5,7 @@ import { useState } from 'react';
 import { FaRegTrashAlt } from "react-icons/fa";
 import { deleteFromCart } from '../../components/cartSlice'
 function Cart() {
-
+    
 
     const dispatch = useDispatch();
     const cart = useSelector((state) => state.cart);
@@ -45,38 +45,37 @@ function Cart() {
                         <div className={`col-1 d-flex justify-content-center align-items-center`}></div>
                     </div>
                 </div>
-                {cartItems.map((item, index) => (
-                    <li key={index}>
-                        <h1>{item.title}</h1>
-                    </li>
+                {cart.map((prod, index) => (
+                    <div className={`box container d-grid align-content-center mt-5 ${style.box}`} key={prod.id} >
+                        <div className='row'>
+
+
+                            <div className='col-3 d-flex flex-start align-items-center'>
+                                <img src={prod.defaultImage.url} className={`${style.image}`} alt="..." />
+                                {prod.name}
+                            </div>
+                            <div className='col-3 d-flex justify-content-center align-items-center  align-self-center'>
+                                ${prod.price}
+                            </div>
+                            <div className='col-3 d-flex justify-content-center align-items-center align-self-center'>
+                                <span className="border border-black rounded-1 d-flex align-items-center">
+                                    <div onClick={() => decreaseQuantity(index)} className="btn count">-</div>
+                                    <big className="px-4 border-start border-end border-dark">
+                                        {quantities[index]}
+                                    </big>
+                                    <div onClick={() => increaseQuantity(index)} className="btn count">+</div>
+                                </span>
+                            </div>
+                            <div className='col-2 d-flex justify-content-center align-items-center align-self-center'>
+                                ${prod.price * quantities[index]}
+                            </div>
+                            <div className='col-1 d-flex justify-content-center align-items-center align-self-center'>
+                                <FaRegTrashAlt className={`${style.can}`} onClick={() => dispatch(deleteFromCart(prod))} />
+                            </div>
+                        </div>
+                    </div>
                 ))}
-                <div className={`box container d-grid align-content-center mt-5 ${style.box}`}  >
-                    <div className='row'>
-                        <div className='col-3 d-flex justify-content-center align-items-center'>
-                            <img src={monitor} />
-                            LCD Monitor
-                        </div>
 
-                        <div className='col-3 d-flex justify-content-center align-items-center  align-self-center'>$650</div>
-                        <div className='col-3 d-flex justify-content-center align-items-center align-self-center'>
-                            <input id="number" type="number" value={'01'} className={`${style.quant}`} />
-                        </div>
-                        <div className='col-3 d-flex justify-content-center align-items-center align-self-center'>$650</div>
-                    </div>
-                </div>
-                <div className={`box container d-grid align-content-center mt-5 ${style.box}`}  >
-                    <div className='row'>
-                        <div className='col-3 d-flex justify-content-center align-items-center'>
-                            <img src={controller} />
-                            H1 Gamepad
-                        </div>
-
-                        <div className='col-3 d-flex justify-content-center align-items-center  align-self-center'>$550</div>
-                        <div className='col-3 d-flex justify-content-center align-items-center align-self-center'>
-                            <input id="number" type="number" value={'02'} />
-                        </div>
-                    </div>
-                </div>
 
 
             </div>
@@ -95,7 +94,7 @@ function Cart() {
                     <div className='totalP d-flex flex-column'>
                         <div className={`subtotal d-flex  ${style.subtotal}`}>
                             <label>Subtotal :</label>
-                            <p >$1750</p>
+                            <p >{totalPrice}</p>
                         </div>
                         <div className={`subtotal d-flex ${style.subtotal}`}>
                             <label>Shipping :</label>
@@ -103,10 +102,10 @@ function Cart() {
                         </div>
                         <div className={`subtotal d-flex  ${style.subtotal}`}>
                             <label>Total :</label>
-                            <p>$1750</p>
+                            <p>{totalPrice}</p>
                         </div>
                     </div>
-                    <button type="button" className={`btn btn-outline-danger bton3 ${style.bton3}`}>Proees to checkout</button>
+                    <button type="button" className={`btn btn-outline-danger bton3 ${style.bton3}`}>Procees to checkout</button>
                 </div>
             </div>
         </>
