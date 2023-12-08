@@ -209,20 +209,20 @@
 }
 /* start selling  */
 
-.selling .swiper-slide .card .card-body {
+.selling .swiper-slide .card .cardbody {
   text-align: start;
   display: flex;
   flex-direction: column;
   gap: 6px;
   background-color: var(--bg-color) !important;
 }
-.selling .swiper-slide .card .card-body p {
+.selling .swiper-slide .card .cardbody p {
   margin: 0;
 }
-.selling .swiper-slide .card .card-body span {
+.selling .swiper-slide .card .cardbody span {
   color: #912b22;
 }
-.selling .swiper-slide .card .card-body span b {
+.selling .swiper-slide .card .cardbody span b {
   text-decoration: line-through;
   color: black;
   opacity: 0.5;
@@ -235,20 +235,20 @@
   border: none;
   padding: 0;
 }
-.all_products .card .card-body {
+.all_products .card .cardbody {
   text-align: start;
   display: flex;
   flex-direction: column;
   gap: 6px;
   background-color: var(--bg-color) !important;
 }
-.all_products .card .card-body p {
+.all_products .card .cardbody p {
   margin: 0;
 }
-.all_products .card .card-body span {
+.all_products .card .cardbody span {
   color: #912b22;
 }
-.all_products .card .card-body span b {
+.all_products .card .cardbody span b {
   text-decoration: line-through;
   color: black;
   opacity: 0.5;

@@ -38,7 +38,7 @@ function Signup(props) {
         console.log(res.data);
         setMessage(res.data.message);
         if (res.data.success) {
-          swal(`${message}`).then(() => {
+          swal(`Check your email inpox please`).then(() => {
             navigate("/login");
           });
         }

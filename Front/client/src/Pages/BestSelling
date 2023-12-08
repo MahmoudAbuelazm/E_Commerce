@@ -1,0 +1,194 @@
+        {/* <div style={{ margin: "100px 0" }} className="selling">
+                    <div className="info d-flex justify-content-between align-items-center mb-5">
+                        <div className="r">
+                            <p>This Month</p>
+                            <b>Best selling producte</b>
+                        </div>
+                        <div className="buton">
+                            <div className="btn">View all</div>
+                        </div>
+                    </div>
+                    <Swiper
+                        slidesPerView={3.5}
+                        spaceBetween={10}
+                        freeMode={true}
+                        modules={[FreeMode]}
+                        className="mySwiper"
+                    >
+                        <SwiperSlide>
+                            <div className="card">
+                                <div className="img_container">
+
+                                    <img
+                                        src={require("../../Images/xbox-black front.jpg")}
+                                        className="card-img-top"
+                                        alt="..."
+                                    />
+                                    <div className="btn btn-dark">Add To Cart</div>
+
+                                    <img src="coat.png" className="card-img-top" alt="..." />
+                                    <div onClick={handleAddToCart} className="btn btn-dark">Add To Cart</div>
+                                    <AiOutlineHeart />
+                                </div>
+                                <div className="card-body">
+                                    <p>coat canada</p>
+                                    <span>
+                                        300$ <b>360$</b>
+                                    </span>
+                                    <div className="star">
+                                        <AiTwotoneStar />
+                                        <AiTwotoneStar />
+                                        <AiTwotoneStar />
+                                        <AiTwotoneStar />
+                                        <AiTwotoneStar />
+                                    </div>
+                                </div>
+                            </div>
+                        </SwiperSlide>
+                        <SwiperSlide>
+                            <div className="card">
+                                <div className="img_container">
+                                    <img
+                                        src={require("../../Images/xbox-blue front.jpg")}
+                                        className="card-img-top"
+                                        alt="..."
+                                    />
+                                    <div className="btn btn-dark">Add To Cart</div>
+                                </div>
+                                <div className="card-body">
+                                    <p>coat canada</p>
+                                    <span>
+                                        300$ <b>360$</b>
+                                    </span>
+                                    <div className="star">
+                                        <AiTwotoneStar />
+                                        <AiTwotoneStar />
+                                        <AiTwotoneStar />
+                                        <AiTwotoneStar />
+                                        <AiTwotoneStar />
+                                    </div>
+                                </div>
+                            </div>
+                        </SwiperSlide>
+                        <SwiperSlide>
+                            <div className="card">
+                                <div className="img_container">
+                                    <img
+                                        src={require("../../Images/coat front.jpg")}
+                                        className="card-img-top"
+                                        alt="..."
+                                    />
+                                    <div className="btn btn-dark">Add To Cart</div>
+                                </div>
+                                <div className="card-body">
+                                    <p>coat canada</p>
+                                    <span>
+                                        300$ <b>360$</b>
+                                    </span>
+                                    <div className="star">
+                                        <AiTwotoneStar />
+                                        <AiTwotoneStar />
+                                        <AiTwotoneStar />
+                                        <AiTwotoneStar />
+                                        <AiTwotoneStar />
+                                    </div>
+                                </div>
+                            </div>
+                        </SwiperSlide>
+                        <SwiperSlide>
+                            <div className="card">
+                                <div className="img_container">
+                                    <img
+                                        src={require("../../Images/lcd front.jpg")}
+                                        className="card-img-top"
+                                        alt="..."
+                                    />
+                                    <div className="btn btn-dark">Add To Cart</div>
+                                </div>
+                                <div className="card-body">
+                                    <p>coat canada</p>
+                                    <span>
+                                        300$ <b>360$</b>
+                                    </span>
+                                    <div className="star">
+                                        <AiTwotoneStar />
+                                        <AiTwotoneStar />
+                                        <AiTwotoneStar />
+                                        <AiTwotoneStar />
+                                        <AiTwotoneStar />
+                                    </div>
+                                </div>
+                            </div>
+                        </SwiperSlide>
+                        <SwiperSlide>
+                            <div className="card">
+                                <div className="img_container">
+                                    <img
+                                        src={require("../../Images/spray front.jpg")}
+                                        alt="..."
+                                    />
+                                    <div className="btn btn-dark">Add To Cart</div>
+                                </div>
+                                <div className="card-body">
+                                    <p>coat canada</p>
+                                    <span>
+                                        300$ <b>360$</b>
+                                    </span>
+                                    <div className="star">
+                                        <AiTwotoneStar />
+                                        <AiTwotoneStar />
+                                        <AiTwotoneStar />
+                                        <AiTwotoneStar />
+                                        <AiTwotoneStar />
+                                    </div>
+                                </div>
+                            </div>
+                        </SwiperSlide>
+                        <SwiperSlide>
+                            <div className="card">
+                                <div className="img_container">
+                                    <img
+                                        src={require("../../Images/watch front.jpg")}
+                                        className="card-img-top"
+                                        alt="..."
+                                    />
+                                    <div className="btn btn-dark">Add To Cart</div>
+                                </div>
+                                <div className="card-body">
+                                    <p>coat canada</p>
+                                    <span>
+                                        300$ <b>360$</b>
+                                    </span>
+                                    <div className="star">
+                                        <AiTwotoneStar />
+                                        <AiTwotoneStar />
+                                        <AiTwotoneStar />
+                                        <AiTwotoneStar />
+                                        <AiTwotoneStar />
+                                    </div>
+                                </div>
+                            </div>
+                        </SwiperSlide>
+                        <SwiperSlide>
+                            <div className="card">
+                                <div className="img_container">
+                                    <img src="coat.png" className="card-img-top" alt="..." />
+                                    <div className="btn btn-dark">Add To Cart</div>
+                                </div>
+                                <div className="card-body">
+                                    <p>coat canada</p>
+                                    <span>
+                                        300$ <b>360$</b>
+                                    </span>
+                                    <div className="star">
+                                        <AiTwotoneStar />
+                                        <AiTwotoneStar />
+                                        <AiTwotoneStar />
+                                        <AiTwotoneStar />
+                                        <AiTwotoneStar />
+                                    </div>
+                                </div>
+                            </div>
+                        </SwiperSlide>
+                    </Swiper>
+                </div> */}

@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
-
+import Lottie from "lottie-react";
+import notfoundImage from "../../Images/404.json";
 /**
  * @author
  * @function Notfound
@@ -8,12 +9,11 @@ import { Link } from "react-router-dom";
 
 const Notfound = (props) => {
   useEffect(() => {
-    props.show(false)
+    props.show(false);
     return () => {
-
-      props.show(true)
-    }
-  }, [props])
+      props.show(true);
+    };
+  }, [props]);
 
   return (
     <div
@@ -25,13 +25,17 @@ const Notfound = (props) => {
         gap: "30px",
       }}
     >
-      <h1
+      {/* <h1
         className=" text-center"
         style={{ fontSize: "110px", fontWeight: "500" }}
       >
         404 Not found
-      </h1>
-
+      </h1> */}
+      <Lottie
+        loop={false}
+        style={{ maxWidth: "600px", marginBottom: "30px" }}
+        animationData={notfoundImage}
+      />
       <Link
         to={"/home"}
         className="btn btn-danger border-0 py-3 px-5  "

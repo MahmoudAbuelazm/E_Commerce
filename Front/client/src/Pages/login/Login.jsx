@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import Style from "./login.module.css";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+import swal from "sweetalert";
 
 function Login(props) {
   let navigate = useNavigate();
@@ -29,10 +30,18 @@ function Login(props) {
       .post("https://backend-kappa-beige.vercel.app/auth/login", user)
       .then((res) => {
         console.log(res.data);
+        localStorage.setItem("userToken", res.data.result);
         setisLoading(false);
         setMessage(res.data.message);
         if (res.data.success) {
-          navigate("/");
+          swal({
+            title: "you are logged in successfully",
+            text: "",
+            icon: "success",
+            button: "Continue",
+          }).then(() => {
+            navigate("/");
+          });
         }
       })
       .catch((err) => {
@@ -41,12 +50,11 @@ function Login(props) {
       });
   };
   useEffect(() => {
-    props.show(false)
+    props.show(false);
     return () => {
-
-      props.show(true)
-    }
-  }, [props])
+      props.show(true);
+    };
+  }, [props]);
 
   return (
     <>
@@ -100,20 +108,26 @@ function Login(props) {
               {message && <div className={`${Style.message}`}>{message}</div>}
               <div className={Style.submit}>
                 <button className={Style.btn} type="submit">
-                  {!isLoading ?
+                  {!isLoading ? (
                     <div
                       style={{ background: "#912b22" }}
                       className="text-white align-self-end"
                     >
                       login
                     </div>
-                    :
-                    <div style={{ background: "#912b22" }} className="justify-content-center rounded-3 align-self-end">
-                      <div class="spinner-border text-white mx-auto d-block" role="status">
+                  ) : (
+                    <div
+                      style={{ background: "#912b22" }}
+                      className="justify-content-center rounded-3 align-self-end"
+                    >
+                      <div
+                        class="spinner-border text-white mx-auto d-block"
+                        role="status"
+                      >
                         <span class="sr-only">Loading...</span>
                       </div>
                     </div>
-                  }
+                  )}
                 </button>
                 <Link to={"/forgetpassword"}>forget password</Link>
               </div>

@@ -31,7 +31,9 @@
   color: var(--main-color) !important;
   border-bottom: 2px solid var(--main-color);
   transition: 0.05s;
-
+}
+.active svg {
+  fill: var(--main-color);
 }
 
 .active:hover {

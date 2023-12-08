@@ -18,6 +18,7 @@ const Home = lazy(() => import("Pages/Home/Home"));
 const Notfound = lazy(() => import("Pages/Notfound/Notfound"));
 const Contact = lazy(() => import("Pages/Contact/Contact"));
 const Cart = lazy(() => import("Pages/Cart/Cart"));
+const Favourite = lazy(() => import("Pages/Favourite/Favourite"));
 
 function App() {
   const [ShowFooter, setShowFooter] = useState(true);
@@ -55,6 +56,7 @@ function App() {
         <Route path="view/:id" element={<ProductDetails />} />
 
         <Route path="cart" element={<Cart />} />
+        <Route path="favourite" element={<Favourite />} />
         <Route path="*" element={<Notfound show={setShowFooter} />} />
       </Routes>
       {ShowFooter ? <Footer /> : ""}
