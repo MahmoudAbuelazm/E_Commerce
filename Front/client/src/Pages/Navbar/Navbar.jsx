@@ -79,9 +79,11 @@ function Navbar(props) {
                       borderRadius: "6px",
                       backgroundColor: "#912b22",
                       color: "#fff",
-                      paddingLeft: "10px",
+                      paddingLeft: "7px",
                       paddingRight: "10px",
-                      maxWidth: "97px",
+                      maxWidth: "50px",
+                      // position: "absolute",
+                      // right: "1%",
                     }}
                     title="logout"
                     onClick={() => {
@@ -95,7 +97,6 @@ function Navbar(props) {
                     }`}
                     to={"/login"}
                   >
-                    logout
                     <svg
                       style={{ marginLeft: "5px" }}
                       xmlns="http://www.w3.org/2000/svg"

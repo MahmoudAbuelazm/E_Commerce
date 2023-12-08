@@ -32,9 +32,12 @@
   border-bottom: 2px solid var(--main-color);
   transition: 0.05s;
 }
+.active svg {
+  fill: var(--main-color);
+}
 
 .active:hover {
-  color: var(--main-color);
+  color: var(--main-color) !important;
 }
 @media (max-width: 991px) {
   .hiddenicon {
