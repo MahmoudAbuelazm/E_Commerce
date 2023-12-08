@@ -14,8 +14,8 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
-import { AiOutlineHeart, AiTwotoneStar } from "react-icons/ai";
 
+<<<<<<< HEAD
 import { useDispatch } from "react-redux";
 import { addToCart } from "../../components/cartSlice";
 import axios from "axios";
@@ -83,6 +83,435 @@ const Home = ({ productData }) => {
                       fill="currentColor"
                       className="bi bi-apple"
                       viewBox="0 0 16 16"
+=======
+import { useDispatch, useSelector } from 'react-redux';
+import { addToCart, deleteFromCart } from '../../components/cartSlice';
+import axios from "axios";
+
+const Home = () => {
+    const [allProducts, setallProducts] = useState([]);
+    const [newprice, setnewprice] = useState('')
+    const navigate = useNavigate()
+    const dispatch = useDispatch()
+    const cart = useSelector((state) => state.cart);
+    
+    useEffect(()=>{
+        const getProduccts =async () => {
+
+            axios.get("https://backend-kappa-beige.vercel.app/product?page=1")
+                .then((respo) => {
+                    setallProducts(respo.data.result)
+                    setnewprice(respo.data.result)
+                    console.log(allProducts);
+                    console.log(newprice);
+                })
+                .catch((err) => {
+                    console.log(err);
+                });
+        };
+        getProduccts();
+    },[dispatch])
+    
+
+    return (
+        <>
+            <div className="container py-5">
+                <div className="row flex-column flex-sm-row">
+                    <div id="links" className="col-sm-2 d-flex flex-column gap-3 ">
+                        <Link to={""}>Men’s fashion</Link>
+                        <Link to={""}>Men’s fashion</Link>
+                        <Link to={""}>Men’s fashion</Link>
+                        <Link to={""}>Men’s fashion</Link>
+                        <Link to={""}>Men’s fashion</Link>
+                        <Link to={""}>Men’s fashion</Link>
+                        <Link to={""}>Men’s fashion</Link>
+                        <Link to={""}>Men’s fashion</Link>
+                        <Link to={""}>Men’s fashion</Link>
+                    </div>
+                    <div className="col-sm-9 ps-sm-5 ms-sm-4">
+                        <Swiper
+                            modules={[Navigation, Pagination, Scrollbar, A11y]}
+                            spaceBetween={0}
+                            slidesPerView={1}
+                            pagination={{
+                                dynamicBullets: true,
+                            }}
+                            onSlideChange={() => console.log("slide change")}
+                        >
+                            <SwiperSlide>
+                                <div className="text">
+                                    <div className="one">
+                                        <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            width="16"
+                                            height="16"
+                                            fill="currentColor"
+                                            className="bi bi-apple"
+                                            viewBox="0 0 16 16"
+                                        >
+                                            <path d="M11.182.008C11.148-.03 9.923.023 8.857 1.18c-1.066 1.156-.902 2.482-.878 2.516.024.034 1.52.087 2.475-1.258.955-1.345.762-2.391.728-2.43Zm3.314 11.733c-.048-.096-2.325-1.234-2.113-3.422.212-2.189 1.675-2.789 1.698-2.854.023-.065-.597-.79-1.254-1.157a3.692 3.692 0 0 0-1.563-.434c-.108-.003-.483-.095-1.254.116-.508.139-1.653.589-1.968.607-.316.018-1.256-.522-2.267-.665-.647-.125-1.333.131-1.824.328-.49.196-1.422.754-2.074 2.237-.652 1.482-.311 3.83-.067 4.56.244.729.625 1.924 1.273 2.796.576.984 1.34 1.667 1.659 1.899.319.232 1.219.386 1.843.067.502-.308 1.408-.485 1.766-.472.357.013 1.061.154 1.782.539.571.197 1.111.115 1.652-.105.541-.221 1.324-1.059 2.238-2.758.347-.79.505-1.217.473-1.282Z" />
+                                            <path d="M11.182.008C11.148-.03 9.923.023 8.857 1.18c-1.066 1.156-.902 2.482-.878 2.516.024.034 1.52.087 2.475-1.258.955-1.345.762-2.391.728-2.43Zm3.314 11.733c-.048-.096-2.325-1.234-2.113-3.422.212-2.189 1.675-2.789 1.698-2.854.023-.065-.597-.79-1.254-1.157a3.692 3.692 0 0 0-1.563-.434c-.108-.003-.483-.095-1.254.116-.508.139-1.653.589-1.968.607-.316.018-1.256-.522-2.267-.665-.647-.125-1.333.131-1.824.328-.49.196-1.422.754-2.074 2.237-.652 1.482-.311 3.83-.067 4.56.244.729.625 1.924 1.273 2.796.576.984 1.34 1.667 1.659 1.899.319.232 1.219.386 1.843.067.502-.308 1.408-.485 1.766-.472.357.013 1.061.154 1.782.539.571.197 1.111.115 1.652-.105.541-.221 1.324-1.059 2.238-2.758.347-.79.505-1.217.473-1.282Z" />
+                                        </svg>
+                                        <p>iPhone 14 Series</p>
+                                    </div>
+                                    <div className="tow">
+                                        <p
+                                            style={{
+                                                fontSize: "48px",
+                                                margin: "0",
+                                                textAlign: "left",
+                                            }}
+                                        >
+                                            Up to 10% off Voucher
+                                        </p>
+                                    </div>
+                                    <div className="three">
+                                        <Link to={""}>Shop Now</Link>
+                                        <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            width="16"
+                                            height="16"
+                                            fill="currentColor"
+                                            className="bi bi-arrow-right"
+                                            viewBox="0 0 16 16"
+                                        >
+                                            <path d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z" />
+                                        </svg>
+                                    </div>
+                                </div>
+                                <div className="im">
+                                    <img
+                                        src="IPhone-PNG-Photos-Transparent-PNG.png"
+                                        alt=""
+                                        width={500}
+                                        height={350}
+                                    />
+                                </div>
+                            </SwiperSlide>
+                            <SwiperSlide>
+                                <div className="text">
+                                    <div className="one">
+                                        <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            width="16"
+                                            height="16"
+                                            fill="currentColor"
+                                            className="bi bi-apple"
+                                            viewBox="0 0 16 16"
+                                        >
+                                            <path d="M11.182.008C11.148-.03 9.923.023 8.857 1.18c-1.066 1.156-.902 2.482-.878 2.516.024.034 1.52.087 2.475-1.258.955-1.345.762-2.391.728-2.43Zm3.314 11.733c-.048-.096-2.325-1.234-2.113-3.422.212-2.189 1.675-2.789 1.698-2.854.023-.065-.597-.79-1.254-1.157a3.692 3.692 0 0 0-1.563-.434c-.108-.003-.483-.095-1.254.116-.508.139-1.653.589-1.968.607-.316.018-1.256-.522-2.267-.665-.647-.125-1.333.131-1.824.328-.49.196-1.422.754-2.074 2.237-.652 1.482-.311 3.83-.067 4.56.244.729.625 1.924 1.273 2.796.576.984 1.34 1.667 1.659 1.899.319.232 1.219.386 1.843.067.502-.308 1.408-.485 1.766-.472.357.013 1.061.154 1.782.539.571.197 1.111.115 1.652-.105.541-.221 1.324-1.059 2.238-2.758.347-.79.505-1.217.473-1.282Z" />
+                                            <path d="M11.182.008C11.148-.03 9.923.023 8.857 1.18c-1.066 1.156-.902 2.482-.878 2.516.024.034 1.52.087 2.475-1.258.955-1.345.762-2.391.728-2.43Zm3.314 11.733c-.048-.096-2.325-1.234-2.113-3.422.212-2.189 1.675-2.789 1.698-2.854.023-.065-.597-.79-1.254-1.157a3.692 3.692 0 0 0-1.563-.434c-.108-.003-.483-.095-1.254.116-.508.139-1.653.589-1.968.607-.316.018-1.256-.522-2.267-.665-.647-.125-1.333.131-1.824.328-.49.196-1.422.754-2.074 2.237-.652 1.482-.311 3.83-.067 4.56.244.729.625 1.924 1.273 2.796.576.984 1.34 1.667 1.659 1.899.319.232 1.219.386 1.843.067.502-.308 1.408-.485 1.766-.472.357.013 1.061.154 1.782.539.571.197 1.111.115 1.652-.105.541-.221 1.324-1.059 2.238-2.758.347-.79.505-1.217.473-1.282Z" />
+                                        </svg>
+                                        <p>iPhone 14 Series</p>
+                                    </div>
+                                    <div className="tow">
+                                        <p
+                                            style={{
+                                                fontSize: "48px",
+                                                margin: "0",
+                                                textAlign: "left",
+                                            }}
+                                        >
+                                            Up to 10% off Voucher
+                                        </p>
+                                    </div>
+                                    <div className="three">
+                                        <Link to={""}>Shop Now</Link>
+                                        <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            width="16"
+                                            height="16"
+                                            fill="currentColor"
+                                            className="bi bi-arrow-right"
+                                            viewBox="0 0 16 16"
+                                        >
+                                            <path
+                                                fill-rule="evenodd"
+                                                d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"
+                                            />
+                                        </svg>
+                                    </div>
+                                </div>
+                                <div className="im">
+                                    <img
+                                        src="IPhone-PNG-Photos-Transparent-PNG.png"
+                                        alt=""
+                                        width={500}
+                                        height={350}
+                                    />
+                                </div>
+                            </SwiperSlide>
+                            <SwiperSlide>
+                                <div className="text">
+                                    <div className="one">
+                                        <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            width="16"
+                                            height="16"
+                                            fill="currentColor"
+                                            className="bi bi-apple"
+                                            viewBox="0 0 16 16"
+                                        >
+                                            <path d="M11.182.008C11.148-.03 9.923.023 8.857 1.18c-1.066 1.156-.902 2.482-.878 2.516.024.034 1.52.087 2.475-1.258.955-1.345.762-2.391.728-2.43Zm3.314 11.733c-.048-.096-2.325-1.234-2.113-3.422.212-2.189 1.675-2.789 1.698-2.854.023-.065-.597-.79-1.254-1.157a3.692 3.692 0 0 0-1.563-.434c-.108-.003-.483-.095-1.254.116-.508.139-1.653.589-1.968.607-.316.018-1.256-.522-2.267-.665-.647-.125-1.333.131-1.824.328-.49.196-1.422.754-2.074 2.237-.652 1.482-.311 3.83-.067 4.56.244.729.625 1.924 1.273 2.796.576.984 1.34 1.667 1.659 1.899.319.232 1.219.386 1.843.067.502-.308 1.408-.485 1.766-.472.357.013 1.061.154 1.782.539.571.197 1.111.115 1.652-.105.541-.221 1.324-1.059 2.238-2.758.347-.79.505-1.217.473-1.282Z" />
+                                            <path d="M11.182.008C11.148-.03 9.923.023 8.857 1.18c-1.066 1.156-.902 2.482-.878 2.516.024.034 1.52.087 2.475-1.258.955-1.345.762-2.391.728-2.43Zm3.314 11.733c-.048-.096-2.325-1.234-2.113-3.422.212-2.189 1.675-2.789 1.698-2.854.023-.065-.597-.79-1.254-1.157a3.692 3.692 0 0 0-1.563-.434c-.108-.003-.483-.095-1.254.116-.508.139-1.653.589-1.968.607-.316.018-1.256-.522-2.267-.665-.647-.125-1.333.131-1.824.328-.49.196-1.422.754-2.074 2.237-.652 1.482-.311 3.83-.067 4.56.244.729.625 1.924 1.273 2.796.576.984 1.34 1.667 1.659 1.899.319.232 1.219.386 1.843.067.502-.308 1.408-.485 1.766-.472.357.013 1.061.154 1.782.539.571.197 1.111.115 1.652-.105.541-.221 1.324-1.059 2.238-2.758.347-.79.505-1.217.473-1.282Z" />
+                                        </svg>
+                                        <p>iPhone 14 Series</p>
+                                    </div>
+                                    <div className="tow">
+                                        <p
+                                            style={{
+                                                fontSize: "48px",
+                                                margin: "0",
+                                                textAlign: "left",
+                                            }}
+                                        >
+                                            Up to 10% off Voucher
+                                        </p>
+                                    </div>
+                                    <div className="three">
+                                        <Link to={""}>Shop Now</Link>
+                                        <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            width="16"
+                                            height="16"
+                                            fill="currentColor"
+                                            className="bi bi-arrow-right"
+                                            viewBox="0 0 16 16"
+                                        >
+                                            <path
+                                                fill-rule="evenodd"
+                                                d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"
+                                            />
+                                        </svg>
+                                    </div>
+                                </div>
+                                <div className="im">
+                                    <img
+                                        src="IPhone-PNG-Photos-Transparent-PNG.png"
+                                        alt=""
+                                        width={500}
+                                        height={350}
+                                    />
+                                </div>
+                            </SwiperSlide>
+                            <SwiperSlide>
+                                <div className="text">
+                                    <div className="one">
+                                        <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            width="16"
+                                            height="16"
+                                            fill="currentColor"
+                                            className="bi bi-apple"
+                                            viewBox="0 0 16 16"
+                                        >
+                                            <path d="M11.182.008C11.148-.03 9.923.023 8.857 1.18c-1.066 1.156-.902 2.482-.878 2.516.024.034 1.52.087 2.475-1.258.955-1.345.762-2.391.728-2.43Zm3.314 11.733c-.048-.096-2.325-1.234-2.113-3.422.212-2.189 1.675-2.789 1.698-2.854.023-.065-.597-.79-1.254-1.157a3.692 3.692 0 0 0-1.563-.434c-.108-.003-.483-.095-1.254.116-.508.139-1.653.589-1.968.607-.316.018-1.256-.522-2.267-.665-.647-.125-1.333.131-1.824.328-.49.196-1.422.754-2.074 2.237-.652 1.482-.311 3.83-.067 4.56.244.729.625 1.924 1.273 2.796.576.984 1.34 1.667 1.659 1.899.319.232 1.219.386 1.843.067.502-.308 1.408-.485 1.766-.472.357.013 1.061.154 1.782.539.571.197 1.111.115 1.652-.105.541-.221 1.324-1.059 2.238-2.758.347-.79.505-1.217.473-1.282Z" />
+                                            <path d="M11.182.008C11.148-.03 9.923.023 8.857 1.18c-1.066 1.156-.902 2.482-.878 2.516.024.034 1.52.087 2.475-1.258.955-1.345.762-2.391.728-2.43Zm3.314 11.733c-.048-.096-2.325-1.234-2.113-3.422.212-2.189 1.675-2.789 1.698-2.854.023-.065-.597-.79-1.254-1.157a3.692 3.692 0 0 0-1.563-.434c-.108-.003-.483-.095-1.254.116-.508.139-1.653.589-1.968.607-.316.018-1.256-.522-2.267-.665-.647-.125-1.333.131-1.824.328-.49.196-1.422.754-2.074 2.237-.652 1.482-.311 3.83-.067 4.56.244.729.625 1.924 1.273 2.796.576.984 1.34 1.667 1.659 1.899.319.232 1.219.386 1.843.067.502-.308 1.408-.485 1.766-.472.357.013 1.061.154 1.782.539.571.197 1.111.115 1.652-.105.541-.221 1.324-1.059 2.238-2.758.347-.79.505-1.217.473-1.282Z" />
+                                        </svg>
+                                        <p>iPhone 14 Series</p>
+                                    </div>
+                                    <div className="tow">
+                                        <p
+                                            style={{
+                                                fontSize: "48px",
+                                                margin: "0",
+                                                textAlign: "left",
+                                            }}
+                                        >
+                                            Up to 10% off Voucher
+                                        </p>
+                                    </div>
+                                    <div className="three">
+                                        <Link to={""}>Shop Now</Link>
+                                        <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            width="16"
+                                            height="16"
+                                            fill="currentColor"
+                                            className="bi bi-arrow-right"
+                                            viewBox="0 0 16 16"
+                                        >
+                                            <path
+                                                fill-rule="evenodd"
+                                                d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"
+                                            />
+                                        </svg>
+                                    </div>
+                                </div>
+                                <div className="im">
+                                    <img
+                                        src="IPhone-PNG-Photos-Transparent-PNG.png"
+                                        alt=""
+                                        width={500}
+                                        height={350}
+                                    />
+                                </div>
+                            </SwiperSlide>
+                            <SwiperSlide>
+                                <div className="text">
+                                    <div className="one">
+                                        <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            width="16"
+                                            height="16"
+                                            fill="currentColor"
+                                            className="bi bi-apple"
+                                            viewBox="0 0 16 16"
+                                        >
+                                            <path d="M11.182.008C11.148-.03 9.923.023 8.857 1.18c-1.066 1.156-.902 2.482-.878 2.516.024.034 1.52.087 2.475-1.258.955-1.345.762-2.391.728-2.43Zm3.314 11.733c-.048-.096-2.325-1.234-2.113-3.422.212-2.189 1.675-2.789 1.698-2.854.023-.065-.597-.79-1.254-1.157a3.692 3.692 0 0 0-1.563-.434c-.108-.003-.483-.095-1.254.116-.508.139-1.653.589-1.968.607-.316.018-1.256-.522-2.267-.665-.647-.125-1.333.131-1.824.328-.49.196-1.422.754-2.074 2.237-.652 1.482-.311 3.83-.067 4.56.244.729.625 1.924 1.273 2.796.576.984 1.34 1.667 1.659 1.899.319.232 1.219.386 1.843.067.502-.308 1.408-.485 1.766-.472.357.013 1.061.154 1.782.539.571.197 1.111.115 1.652-.105.541-.221 1.324-1.059 2.238-2.758.347-.79.505-1.217.473-1.282Z" />
+                                            <path d="M11.182.008C11.148-.03 9.923.023 8.857 1.18c-1.066 1.156-.902 2.482-.878 2.516.024.034 1.52.087 2.475-1.258.955-1.345.762-2.391.728-2.43Zm3.314 11.733c-.048-.096-2.325-1.234-2.113-3.422.212-2.189 1.675-2.789 1.698-2.854.023-.065-.597-.79-1.254-1.157a3.692 3.692 0 0 0-1.563-.434c-.108-.003-.483-.095-1.254.116-.508.139-1.653.589-1.968.607-.316.018-1.256-.522-2.267-.665-.647-.125-1.333.131-1.824.328-.49.196-1.422.754-2.074 2.237-.652 1.482-.311 3.83-.067 4.56.244.729.625 1.924 1.273 2.796.576.984 1.34 1.667 1.659 1.899.319.232 1.219.386 1.843.067.502-.308 1.408-.485 1.766-.472.357.013 1.061.154 1.782.539.571.197 1.111.115 1.652-.105.541-.221 1.324-1.059 2.238-2.758.347-.79.505-1.217.473-1.282Z" />
+                                        </svg>
+                                        <p>iPhone 14 Series</p>
+                                    </div>
+                                    <div className="tow">
+                                        <p
+                                            style={{
+                                                fontSize: "48px",
+                                                margin: "0",
+                                                textAlign: "left",
+                                            }}
+                                        >
+                                            Up to 10% off Voucher
+                                        </p>
+                                    </div>
+                                    <div className="three">
+                                        <Link to={""}>Shop Now</Link>
+                                        <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            width="16"
+                                            height="16"
+                                            fill="currentColor"
+                                            className="bi bi-arrow-right"
+                                            viewBox="0 0 16 16"
+                                        >
+                                            <path
+                                                fill-rule="evenodd"
+                                                d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"
+                                            />
+                                        </svg>
+                                    </div>
+                                </div>
+                                <div className="im">
+                                    <img
+                                        src="IPhone-PNG-Photos-Transparent-PNG.png"
+                                        alt=""
+                                        width={500}
+                                        height={350}
+                                    />
+                                </div>
+                            </SwiperSlide>
+                        </Swiper>
+                    </div>
+                </div>
+                <div style={{ margin: "100px 0" }} className="category">
+                    <div className="info mb-5">
+                        <p>Categories</p>
+                        <b>Browse By Category</b>
+                    </div>
+                    <div className="cards d-flex flex-wrap justify-content-center gap-5 mt-5">
+                        <div className="item ">
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="16"
+                                height="16"
+                                fill="currentColor"
+                                className="bi bi-phone"
+                                viewBox="0 0 16 16"
+                            >
+                                <path d="M11 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h6zM5 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H5z" />
+                                <path d="M8 14a1 1 0 1 0 0-2 1 1 0 0 0 0 2z" />
+                            </svg>
+                            <p>electronics</p>
+                        </div>
+                        <div className="item ">
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="16"
+                                height="16"
+                                fill="currentColor"
+                                className="bi bi-phone"
+                                viewBox="0 0 16 16"
+                            >
+                                <path d="M11 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h6zM5 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H5z" />
+                                <path d="M8 14a1 1 0 1 0 0-2 1 1 0 0 0 0 2z" />
+                            </svg>
+                            <p>clothes</p>
+                        </div>
+                        <div className="item ">
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="16"
+                                height="16"
+                                fill="currentColor"
+                                className="bi bi-phone"
+                                viewBox="0 0 16 16"
+                            >
+                                <path d="M11 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h6zM5 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H5z" />
+                                <path d="M8 14a1 1 0 1 0 0-2 1 1 0 0 0 0 2z" />
+                            </svg>
+                            <p>accessories</p>
+                        </div>
+                        <div className="item ">
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="16"
+                                height="16"
+                                fill="currentColor"
+                                className="bi bi-phone"
+                                viewBox="0 0 16 16"
+                            >
+                                <path d="M11 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h6zM5 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H5z" />
+                                <path d="M8 14a1 1 0 1 0 0-2 1 1 0 0 0 0 2z" />
+                            </svg>
+                            <p>Phone</p>
+                        </div>
+                        <div className="item ">
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="16"
+                                height="16"
+                                fill="currentColor"
+                                className="bi bi-phone"
+                                viewBox="0 0 16 16"
+                            >
+                                <path d="M11 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h6zM5 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H5z" />
+                                <path d="M8 14a1 1 0 1 0 0-2 1 1 0 0 0 0 2z" />
+                            </svg>
+                            <p>Phone</p>
+                        </div>
+                        <div className="item ">
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="16"
+                                height="16"
+                                fill="currentColor"
+                                className="bi bi-phone"
+                                viewBox="0 0 16 16"
+                            >
+                                <path d="M11 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h6zM5 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H5z" />
+                                <path d="M8 14a1 1 0 1 0 0-2 1 1 0 0 0 0 2z" />
+                            </svg>
+                            <p>Phone</p>
+                        </div>
+                    </div>
+                </div>
+                {/* <div style={{ margin: "100px 0" }} className="selling">
+                    <div className="info d-flex justify-content-between align-items-center mb-5">
+                        <div className="r">
+                            <p>This Month</p>
+                            <b>Best selling producte</b>
+                        </div>
+                        <div className="buton">
+                            <div className="btn">View all</div>
+                        </div>
+                    </div>
+                    <Swiper
+                        slidesPerView={3.5}
+                        spaceBetween={10}
+                        freeMode={true}
+                        modules={[FreeMode]}
+                        className="mySwiper"
+>>>>>>> d14d572003b99d4342edc2696e8c61299c585470
                     >
                       <path d="M11.182.008C11.148-.03 9.923.023 8.857 1.18c-1.066 1.156-.902 2.482-.878 2.516.024.034 1.52.087 2.475-1.258.955-1.345.762-2.391.728-2.43Zm3.314 11.733c-.048-.096-2.325-1.234-2.113-3.422.212-2.189 1.675-2.789 1.698-2.854.023-.065-.597-.79-1.254-1.157a3.692 3.692 0 0 0-1.563-.434c-.108-.003-.483-.095-1.254.116-.508.139-1.653.589-1.968.607-.316.018-1.256-.522-2.267-.665-.647-.125-1.333.131-1.824.328-.49.196-1.422.754-2.074 2.237-.652 1.482-.311 3.83-.067 4.56.244.729.625 1.924 1.273 2.796.576.984 1.34 1.667 1.659 1.899.319.232 1.219.386 1.843.067.502-.308 1.408-.485 1.766-.472.357.013 1.061.154 1.782.539.571.197 1.111.115 1.652-.105.541-.221 1.324-1.059 2.238-2.758.347-.79.505-1.217.473-1.282Z" />
                       <path d="M11.182.008C11.148-.03 9.923.023 8.857 1.18c-1.066 1.156-.902 2.482-.878 2.516.024.034 1.52.087 2.475-1.258.955-1.345.762-2.391.728-2.43Zm3.314 11.733c-.048-.096-2.325-1.234-2.113-3.422.212-2.189 1.675-2.789 1.698-2.854.023-.065-.597-.79-1.254-1.157a3.692 3.692 0 0 0-1.563-.434c-.108-.003-.483-.095-1.254.116-.508.139-1.653.589-1.968.607-.316.018-1.256-.522-2.267-.665-.647-.125-1.333.131-1.824.328-.49.196-1.422.754-2.074 2.237-.652 1.482-.311 3.83-.067 4.56.244.729.625 1.924 1.273 2.796.576.984 1.34 1.667 1.659 1.899.319.232 1.219.386 1.843.067.502-.308 1.408-.485 1.766-.472.357.013 1.061.154 1.782.539.571.197 1.111.115 1.652-.105.541-.221 1.324-1.059 2.238-2.758.347-.79.505-1.217.473-1.282Z" />
@@ -97,6 +526,7 @@ const Home = ({ productData }) => {
                         textAlign: "left",
                       }}
                     >
+<<<<<<< HEAD
                       Up to 10% off Voucher
                     </p>
                   </div>
@@ -113,6 +543,45 @@ const Home = ({ productData }) => {
                       <path d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z" />
                     </svg>
                   </div>
+=======
+                        {allProducts.map((prod, ind) => {
+                            const isInCart = cart.some(item => item.id === prod.id);
+                            return (
+                                <div className="col-3 card" style={{ width: "305px" }} key={ind}>
+                                    
+                                    <div className="img_container">
+                                        <img onClick={() => navigate(`/view/${prod.id}`)} src={prod.defaultImage.url} className="card-img-top" alt="..." />
+                                        <button 
+                                            onClick={() => {
+                                                if (isInCart) {
+                                                    dispatch(deleteFromCart(prod))
+                                                } else {
+                                                    
+                                                    dispatch(addToCart(prod))
+                                                    
+                                                }
+                                            }}
+                                            className={`btn ${isInCart ? 'btn-danger' : 'btn-dark'}`}>
+                                            {isInCart ? "Remove from Cart" : "Add to Cart"}
+                                            
+                                        </button>
+                                        {/* <AiOutlineHeart /> */}
+                                        {prod.status === 'new' ? <div className="new">
+                                            new
+                                        </div> : ''}
+                                    </div>
+                                    <div className="card-body">
+                                        <p>{prod.name}</p>
+                                        <span>
+                                            {prod.price - (prod.price * (prod.discount / 100))} <b>{prod.price} </b>
+                                        </span>
+                                        <span>availableItems : {prod.availableItems}</span>
+                                    </div>
+                                </div>
+                            )
+                        })}
+                    </div>
+>>>>>>> d14d572003b99d4342edc2696e8c61299c585470
                 </div>
                 <div className="im">
                   <img

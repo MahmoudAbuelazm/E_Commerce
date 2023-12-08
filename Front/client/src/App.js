@@ -2,6 +2,8 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { lazy, Suspense, useEffect, useState } from "react";
 import Footer from "Pages/Footer/Footer";
 import ProductDetails from "Pages/productDetails/ProductDetails";
+import { Provider } from "react-redux";
+import store from "components/store";
 
 // Import your components
 const Navbar = lazy(() => import("Pages/Navbar/Navbar"));
@@ -33,15 +35,18 @@ function App() {
     // }
   }, []);
   return (
-    <Suspense
-      fallback={
-        <div className="d-flex justify-content-center align-items-center mt-5">
-          <div
-            className="spinner-grow text-success spinner-grow-lg"
-            role="status"
-          >
-            <span className="visually-hidden">Loading...</span>
+    
+      <Suspense
+        fallback={
+          <div className="d-flex justify-content-center align-items-center mt-5">
+            <div
+              className="spinner-grow text-success spinner-grow-lg"
+              role="status"
+            >
+              <span className="visually-hidden">Loading...</span>
+            </div>
           </div>
+<<<<<<< HEAD
         </div>
       }
     >
@@ -65,15 +70,45 @@ function App() {
         />
         <Route path="signup" element={<Signup show={setShowFooter} />} />
         <Route path="contact" element={<Contact />} />
+=======
+        }
+      >
+        <Navbar />
+        <Routes>
+          {["home", "/"].map((path, index) => (
+            <Route path={path} element={<Home />} key={index} />
+          ))}
+          <Route path="home" element={<Home />} />
+          <Route path="login" element={<Login show={setShowFooter} />} />
+          <Route
+            path="forgetpassword"
+            element={<Forgetpassword show={setShowFooter} />}
+          />
+          <Route
+            path="resetpassword"
+            element={<Rresetpaswword show={setShowFooter} />}
+          />
+          <Route path="signup" element={<Signup show={setShowFooter} />} />
+          <Route path="contact" element={<Contact />} />
+>>>>>>> d14d572003b99d4342edc2696e8c61299c585470
 
-        <Route path="view/:id" element={<ProductDetails />} />
+          <Route path="view/:id" element={<ProductDetails />} />
 
+<<<<<<< HEAD
         <Route path="cart" element={<Cart />} />
         <Route path="favourite" element={<Favourite />} />
         <Route path="*" element={<Notfound show={setShowFooter} />} />
       </Routes>
       {ShowFooter ? <Footer /> : ""}
     </Suspense>
+=======
+          <Route path="cart" element={<Cart />} />
+          <Route path="*" element={<Notfound show={setShowFooter} />} />
+        </Routes>
+        {ShowFooter ? <Footer /> : ""}
+      </Suspense>
+    
+>>>>>>> d14d572003b99d4342edc2696e8c61299c585470
   );
 }
 

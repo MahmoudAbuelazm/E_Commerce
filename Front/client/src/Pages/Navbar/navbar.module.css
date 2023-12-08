@@ -93,3 +93,8 @@
   height: 32px;
   border-radius: 50%;
 }
+.cartIcon {
+  font-size: 23px;
+  margin-bottom: 1px;
+  color: #000;
+}
