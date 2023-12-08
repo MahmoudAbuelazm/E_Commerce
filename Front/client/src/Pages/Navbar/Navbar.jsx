@@ -72,6 +72,14 @@ function Navbar(props) {
               <li className="nav-item">
                 {props.isLoggedIn ? (
                   <Link
+                    style={{
+                      borderRadius: "6px",
+                      backgroundColor: "#912b22",
+                      color: "#fff",
+                      paddingLeft: "10px",
+                      paddingRight: "10px",
+                      maxWidth: "97px",
+                    }}
                     title="logout"
                     onClick={() => {
                       handleLinkClick("logout");
@@ -79,12 +87,14 @@ function Navbar(props) {
                       localStorage.setItem("isLoggedIn", "false");
                       localStorage.setItem("userToken", "");
                     }}
-                    className={`nav-link ${
+                    className={`nav-link ms-sm-0 ms-lg-2 mt-sm-2 mt-lg-0 ${
                       activeLink === "logout" ? `${Style.active}` : ""
                     }`}
                     to={"/login"}
                   >
+                    logout
                     <svg
+                      style={{ marginLeft: "5px" }}
                       xmlns="http://www.w3.org/2000/svg"
                       width={20}
                       height={20}
