@@ -35,18 +35,15 @@ function App() {
     // }
   }, []);
   return (
-    
-      <Suspense
-        fallback={
-          <div className="d-flex justify-content-center align-items-center mt-5">
-            <div
-              className="spinner-grow text-success spinner-grow-lg"
-              role="status"
-            >
-              <span className="visually-hidden">Loading...</span>
-            </div>
+    <Suspense
+      fallback={
+        <div className="d-flex justify-content-center align-items-center mt-5">
+          <div
+            className="spinner-grow text-success spinner-grow-lg"
+            role="status"
+          >
+            <span className="visually-hidden">Loading...</span>
           </div>
-<<<<<<< HEAD
         </div>
       }
     >
@@ -58,7 +55,13 @@ function App() {
         <Route path="home" element={<Home />} />
         <Route
           path="login"
-          element={<Login setIsLoggedIn={setIsLoggedIn} show={setShowFooter} />}
+          element={
+            <Login
+              isLoggedIn={isLoggedIn}
+              setIsLoggedIn={setIsLoggedIn}
+              show={setShowFooter}
+            />
+          }
         />
         <Route
           path="forgetpassword"
@@ -70,45 +73,15 @@ function App() {
         />
         <Route path="signup" element={<Signup show={setShowFooter} />} />
         <Route path="contact" element={<Contact />} />
-=======
-        }
-      >
-        <Navbar />
-        <Routes>
-          {["home", "/"].map((path, index) => (
-            <Route path={path} element={<Home />} key={index} />
-          ))}
-          <Route path="home" element={<Home />} />
-          <Route path="login" element={<Login show={setShowFooter} />} />
-          <Route
-            path="forgetpassword"
-            element={<Forgetpassword show={setShowFooter} />}
-          />
-          <Route
-            path="resetpassword"
-            element={<Rresetpaswword show={setShowFooter} />}
-          />
-          <Route path="signup" element={<Signup show={setShowFooter} />} />
-          <Route path="contact" element={<Contact />} />
->>>>>>> d14d572003b99d4342edc2696e8c61299c585470
-
-          <Route path="view/:id" element={<ProductDetails />} />
-
-<<<<<<< HEAD
-        <Route path="cart" element={<Cart />} />
         <Route path="favourite" element={<Favourite />} />
+
+        <Route path="view/:id" element={<ProductDetails />} />
+
+        <Route path="cart" element={<Cart />} />
         <Route path="*" element={<Notfound show={setShowFooter} />} />
       </Routes>
       {ShowFooter ? <Footer /> : ""}
     </Suspense>
-=======
-          <Route path="cart" element={<Cart />} />
-          <Route path="*" element={<Notfound show={setShowFooter} />} />
-        </Routes>
-        {ShowFooter ? <Footer /> : ""}
-      </Suspense>
-    
->>>>>>> d14d572003b99d4342edc2696e8c61299c585470
   );
 }
 

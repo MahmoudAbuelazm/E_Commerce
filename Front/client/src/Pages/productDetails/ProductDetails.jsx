@@ -198,7 +198,10 @@ const ProductDetails = () => {
                 <span className=" border border-dark p-2 rounded-2">
                   {fav ? (
                     <svg
-                      onClick={() => setfav(false)}
+                      onClick={() => {
+                        deleteFromWishlist(item.id);
+                        setfav(false);
+                      }}
                       xmlns="http://www.w3.org/2000/svg"
                       width="30"
                       height="30"
@@ -214,7 +217,10 @@ const ProductDetails = () => {
                     </svg>
                   ) : (
                     <svg
-                      onClick={() => setfav(true)}
+                      onClick={() => {
+                        addToWishlist(item.id);
+                        setfav(true);
+                      }}
                       xmlns="http://www.w3.org/2000/svg"
                       width="30"
                       height="30"

@@ -1,17 +1,12 @@
 import React, { useState } from "react";
 import Style from "./navbar.module.css";
-import { Link } from "react-router-dom";
-<<<<<<< HEAD
-function Navbar(props) {
-  const [activeLink, setActiveLink] = useState("");
-  let userloggedin = localStorage.getItem("isLoggedIn");
-=======
+import { Link, Navigate } from "react-router-dom";
 import { LiaCartArrowDownSolid } from "react-icons/lia";
 import { useSelector } from "react-redux";
-function Navbar() {
+function Navbar(props) {
   const [activeLink, setActiveLink] = useState("");
   const cart = useSelector((state) => state.cart);
->>>>>>> d14d572003b99d4342edc2696e8c61299c585470
+  let userloggedin = JSON.parse(localStorage.getItem("isLoggedIn"));
   const handleLinkClick = (link) => {
     setActiveLink(link);
   };
@@ -80,6 +75,14 @@ function Navbar() {
               <li className="nav-item">
                 {props.isLoggedIn ? (
                   <Link
+                    style={{
+                      borderRadius: "6px",
+                      backgroundColor: "#912b22",
+                      color: "#fff",
+                      paddingLeft: "10px",
+                      paddingRight: "10px",
+                      maxWidth: "97px",
+                    }}
                     title="logout"
                     onClick={() => {
                       handleLinkClick("logout");
@@ -87,12 +90,14 @@ function Navbar() {
                       localStorage.setItem("isLoggedIn", "false");
                       localStorage.setItem("userToken", "");
                     }}
-                    className={`nav-link ${
+                    className={`nav-link ms-sm-0 ms-lg-2 mt-sm-2 mt-lg-0 ${
                       activeLink === "logout" ? `${Style.active}` : ""
                     }`}
                     to={"/login"}
                   >
+                    logout
                     <svg
+                      style={{ marginLeft: "5px" }}
                       xmlns="http://www.w3.org/2000/svg"
                       width={20}
                       height={20}
@@ -156,7 +161,6 @@ function Navbar() {
                 }`}
                 to="/favourite"
               >
-<<<<<<< HEAD
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="20"
@@ -178,42 +182,22 @@ function Navbar() {
                 }`}
                 to="/cart"
               >
-                <svg
-=======
-                <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
-              </svg>
-
-              
-              
-
-                  <Link
-                    onClick={() => {
-                      handleLinkClick("cart");
-                    }}
-                    className={`nav-link ${activeLink === "cart" ? `${Style.active}` : ""
-                      }`}
-                    to="/cart"
+                {cart.length > 0 ? (
+                  <LiaCartArrowDownSolid className={` ${Style.cartIcon} `} />
+                ) : (
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    fill="#000"
+                    style={{ marginBottom: "4px" }}
+                    className={`bi bi-cart  `}
+                    viewBox="0 0 16 16"
                   >
-                      {cart.length > 0 ? (
-                        <LiaCartArrowDownSolid className={` ${Style.cartIcon} `}/>
-                        ):(
-                          
-                          <svg
->>>>>>> d14d572003b99d4342edc2696e8c61299c585470
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="20"
-                  height="20"
-                  fill="#000"
-                  style={{ marginBottom: "4px" }}
-                  className={`bi bi-cart  `}
-                  viewBox="0 0 16 16"
-                >
-                  <path d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l1.25 5h8.22l1.25-5H3.14zM5 13a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z" />
-                </svg>
-                      )}
-                  </Link>
-                
-              
+                    <path d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l1.25 5h8.22l1.25-5H3.14zM5 13a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z" />
+                  </svg>
+                )}
+              </Link>
 
               <svg
                 xmlns="http://www.w3.org/2000/svg"
