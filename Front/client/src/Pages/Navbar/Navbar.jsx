@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import Style from "./navbar.module.css";
 import { Link } from "react-router-dom";
-function Navbar() {
+function Navbar(props) {
   const [activeLink, setActiveLink] = useState("");
-
+  let userloggedin = localStorage.getItem("isLoggedIn");
   const handleLinkClick = (link) => {
     setActiveLink(link);
   };
@@ -70,17 +70,51 @@ function Navbar() {
                 </Link>
               </li>
               <li className="nav-item">
-                <Link
-                  onClick={() => {
-                    handleLinkClick("login");
-                  }}
-                  className={`nav-link ${
-                    activeLink === "login" ? `${Style.active}` : ""
-                  }`}
-                  to={"/login"}
-                >
-                  Login
-                </Link>
+                {props.isLoggedIn ? (
+                  <Link
+                    title="logout"
+                    onClick={() => {
+                      handleLinkClick("logout");
+                      props.setIsLoggedIn(false);
+                      localStorage.setItem("isLoggedIn", "false");
+                      localStorage.setItem("userToken", "");
+                    }}
+                    className={`nav-link ${
+                      activeLink === "logout" ? `${Style.active}` : ""
+                    }`}
+                    to={"/login"}
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width={20}
+                      height={20}
+                      fill="currentColor"
+                      className="bi bi-box-arrow-left"
+                      viewBox="0 0 16 16"
+                    >
+                      <path
+                        fillRule="evenodd"
+                        d="M6 12.5a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v2a.5.5 0 0 1-1 0v-2A1.5 1.5 0 0 1 6.5 2h8A1.5 1.5 0 0 1 16 3.5v9a1.5 1.5 0 0 1-1.5 1.5h-8A1.5 1.5 0 0 1 5 12.5v-2a.5.5 0 0 1 1 0z"
+                      />
+                      <path
+                        fillRule="evenodd"
+                        d="M.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L1.707 7.5H10.5a.5.5 0 0 1 0 1H1.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3z"
+                      />
+                    </svg>
+                  </Link>
+                ) : (
+                  <Link
+                    onClick={() => {
+                      handleLinkClick("login");
+                    }}
+                    className={`nav-link ${
+                      activeLink === "login" ? `${Style.active}` : ""
+                    }`}
+                    to={"/login"}
+                  >
+                    login
+                  </Link>
+                )}
               </li>
             </ul>
             <span className="d-flex align-items-center gap-3">

@@ -40,6 +40,8 @@ function Login(props) {
             icon: "success",
             button: "Continue",
           }).then(() => {
+            props.setIsLoggedIn(true);
+            localStorage.setItem("isLoggedIn", "true");
             navigate("/");
           });
         }

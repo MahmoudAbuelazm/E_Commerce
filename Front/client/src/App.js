@@ -1,5 +1,5 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { lazy, Suspense, useState } from "react";
+import { lazy, Suspense, useEffect, useState } from "react";
 import Footer from "Pages/Footer/Footer";
 import ProductDetails from "Pages/productDetails/ProductDetails";
 
@@ -21,7 +21,17 @@ const Cart = lazy(() => import("Pages/Cart/Cart"));
 const Favourite = lazy(() => import("Pages/Favourite/Favourite"));
 
 function App() {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [ShowFooter, setShowFooter] = useState(true);
+
+  useEffect(() => {
+    const userloggedin = JSON.parse(localStorage.getItem("isLoggedIn"));
+    console.log("🚀 ~ file: App.js:25 ~ App ~ userloggedin:", userloggedin);
+    setIsLoggedIn(userloggedin);
+    // if (!isLoggedIn) {
+    //   localStorage.setItem("userToken", "");
+    // }
+  }, []);
   return (
     <Suspense
       fallback={
@@ -35,13 +45,16 @@ function App() {
         </div>
       }
     >
-      <Navbar />
+      <Navbar isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
       <Routes>
         {["home", "/"].map((path, index) => (
           <Route path={path} element={<Home />} key={index} />
         ))}
         <Route path="home" element={<Home />} />
-        <Route path="login" element={<Login show={setShowFooter} />} />
+        <Route
+          path="login"
+          element={<Login setIsLoggedIn={setIsLoggedIn} show={setShowFooter} />}
+        />
         <Route
           path="forgetpassword"
           element={<Forgetpassword show={setShowFooter} />}
